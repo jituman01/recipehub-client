@@ -5,6 +5,7 @@ import { Button, Input, Label, TextField } from "@heroui/react";
 import { Plus, ArrowUpFromLine, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { imageUpload } from "@/lib/imageUpload";
+import { addRecipe } from "@/lib/api/recipe";
 
 export default function AddRecipeForm() {
   const [loading, setLoading] = useState(false);
@@ -15,10 +16,19 @@ export default function AddRecipeForm() {
 
     const formData = new FormData(e.target);
     // console.log('formData',formData);
-    const recipeData = Object.fromEntries(formData.entries());
-    // console.log("Recipe Data Submitting:", recipeData);
-    const image = await imageUpload(recipeData.image);
+    const data = Object.fromEntries(formData.entries());
+    // console.log("Recipe Data Submitting:", data);
+    const image = await imageUpload(data.image);
     // console.log('image',image);
+
+    const recipe = {
+      ...data,
+      image: image.url
+    }
+
+    const result = await addRecipe(recipe);
+    // console.log(result);
+    
     
 
     setTimeout(() => {
