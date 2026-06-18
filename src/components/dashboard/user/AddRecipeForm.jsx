@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button, Input, Label, TextField } from "@heroui/react";
 import { Plus, ArrowUpFromLine, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
+import { imageUpload } from "@/lib/imageUpload";
 
 export default function AddRecipeForm() {
   const [loading, setLoading] = useState(false);
@@ -13,9 +14,12 @@ export default function AddRecipeForm() {
     setLoading(true);
 
     const formData = new FormData(e.target);
+    // console.log('formData',formData);
     const recipeData = Object.fromEntries(formData.entries());
-
     // console.log("Recipe Data Submitting:", recipeData);
+    const image = await imageUpload(recipeData.image);
+    // console.log('image',image);
+    
 
     setTimeout(() => {
       setLoading(false);
@@ -74,8 +78,8 @@ export default function AddRecipeForm() {
             <label className="text-xs font-semibold text-orange-500">Upload Recipe Image</label>
             <label className="flex flex-col items-center justify-center w-full h-full min-h-[100px] border-2 border-dashed border-divider rounded-xl cursor-pointer bg-default-50 hover:bg-default-100 transition-all overflow-hidden relative group">
               <ArrowUpFromLine size={16} className="text-orange-500" />
-              <span>Choose Recipe Image</span>
-              <input type="file" name="image" accept="image/*" required className="hidden" />
+              <span>Input Recipe Image</span>
+              <input type="file" name="image" />
             </label>
           </div>
         </div>
