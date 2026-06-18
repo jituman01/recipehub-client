@@ -21,8 +21,8 @@ export default function SidebarUI({ role }) {
   const dashboardItems = {
     user: [
       { icon: Home, label: "Overview", link: "/dashboard/user" },
-      { icon: BookAIcon, label: "My Recipes", link: "/dashboard/my-recipe" },
-      { icon: Plus, label: "Add Recipe", link: "/dashboard/add-recipe" },
+      { icon: BookAIcon, label: "My Recipes", link: "/dashboard/user/my-recipes" },
+      { icon: Plus, label: "Add Recipe", link: "/dashboard/user/add-recipe" },
       { icon: Heart, label: "My Favorites", link: "/dashboard/favorites" },
       { icon: ShoppingCart, label: "My Purchased Recipes", link: "/dashboard/purchased-recipe" },
       { icon: User, label: "Profile", link: "/dashboard/profile" },
