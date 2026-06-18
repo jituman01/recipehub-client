@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 import dns from "node:dns";
+import Footer from "@/components/Footer";
 dns.setServers(['1.1.1.1', '1.0.0.1']);
 
 const inter = Inter({
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
           <main className="max-w-7xl mx-auto px-2 min-h-screen">
             {children}
           </main>
+          <Footer/>
            
 
         </ThemeProvider>

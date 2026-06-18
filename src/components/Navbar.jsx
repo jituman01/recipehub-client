@@ -6,6 +6,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState,useEffect } from "react";
 import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
@@ -23,6 +24,11 @@ const Navbar = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const pathname = usePathname();
+  if (pathname.includes('dashboard')) {
+    return null;
+  }
 
 
   const handleSignOut = async () => {
