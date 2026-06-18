@@ -1,21 +1,20 @@
+import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
+
 export default function DashboardLayout({ children }) {
   return (
     <div className="flex h-screen bg-transparent">
       <div className="flex flex-1 overflow-hidden">
         {/* sidebar */}
-      <div className="border border-2">
-        Sidebar
-      </div >
-        {/* navbar */}
-        <div className="flex flex-1 overflow-hidden">
-          <div>
-        navbar
-      </div>
+      <DashboardSidebar/>
 
-      <main className="p-5">
-        {children}
-          </main>
-          </div>
+        <div className="flex-1 overflow-y-auto">
+          {/* navbar */}
+           <div className="border border-b-1  p-3 w-full ">Navbar</div>
+          <main className="p-5">
+           
+
+            {children}</main>
+        </div>
       </div>
     </div>
   );
