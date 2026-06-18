@@ -1,48 +1,98 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeProvider";
+"use client";
 
-import dns from "node:dns";
-dns.setServers(['1.1.1.1', '1.0.0.1']);
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
-const inter = Inter({
-  subsets: ["latin"],
-});
-
-export const metadata = {
-  title: "RecipeHub — Recipe Sharing Platform",
-  description: "Discover, Create & Share Your Favorite Recipes",
-};
-
-export default function RootLayout({ children }) {
+export default function Banner() {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.className} h-full antialiased`}>
-      <body className="bg-white dark:bg-zinc-950 text-slate-900 dark:text-zinc-50 transition-colors duration-500">
+    <section className="relative min-h-[80vh] flex items-center justify-center bg-transparent overflow-hidden px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full relative z-10">
         
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        {/* LEFT SIDE: CONTENT */}
+        <div className="text-left space-y-6 max-w-xl">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-green-500/10 dark:bg-yellow-500/20 text-green-600 dark:text-yellow-400 text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border border-green-500/25"
+          >
+            <span>✨</span> Checking The Proxy!
+          </motion.div>
 
-          {/* backround glow */}
-          <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden transition-colors duration-500">
-            <div className="absolute top-0 -left-40 w-[500px] h-[500px] bg-[#f4f86e] dark:bg-blue-600/15 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight"
+          >
+            Taste the Best that <br />
+            <span className="text-orange-500 dark:text-orange-500">Surprise you</span>
+          </motion.h1>
 
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#f4f86e] dark:bg-cyan-500/10 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed"
+          >
+            Delicious, nutritious, meals made with fresh, organic ingredients for better you.
+          </motion.p>
 
-            <div className="absolute top-1/3 -right-20 w-[700px] h-[700px] bg-[#f4f86e] dark:bg-indigo-600/15 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
+          {/* Pricing Info (Optional/Customizable) */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="flex items-center gap-4 py-2"
+          >
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">$15.00</span>
+            <span className="text-slate-400 dark:text-zinc-500 line-through text-sm">$25.00</span>
+          </motion.div>
 
-            <div className="absolute -bottom-30 right-20 w-[600px] h-[600px] bg-[#f4f86e] dark:bg-blue-500/10 rounded-full blur-[150px] sm:blur-[220px] transition-all duration-500" />
-          </div>
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex items-center gap-4"
+          >
+            <Link
+              href="/recipes"
+              className="px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-full shadow-md hover:shadow-orange-600/20 active:scale-95 transition-all text-center text-sm min-w-[120px]"
+            >
+              Explore Menu
+            </Link>
+            
+            
+          </motion.div>
+        </div>
 
-          <Navbar />
-          
-          <main className="max-w-7xl mx-auto px-2 min-h-screen">
-            {children}
-          </main>
-           <Footer />
+        {/* RIGHT SIDE: IMAGE WITH ANIMATION */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, rotate: 15 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          className="flex justify-center md:justify-end relative w-full aspect-square max-w-[450px] md:max-w-full mx-auto"
+        >
+          {/* Floating Leaf Particles For Better Visual Impact */}
+          <div className="absolute top-10 left-5 w-6 h-6 bg-emerald-500/20 rounded-full blur-sm animate-bounce"></div>
+          <div className="absolute bottom-16 right-10 w-4 h-4 bg-lime-500/30 rounded-full blur-xs animate-pulse"></div>
 
-        </ThemeProvider>
-      </body>
-    </html>
+          <Image
+            src="/banner.png"
+            alt="Delicious Food Plate Banner"
+            fill
+            priority
+            className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_35px_rgba(255,255,255,0.05)]"
+          />
+        </motion.div>
+
+      </div>
+    </section>
   );
 }
