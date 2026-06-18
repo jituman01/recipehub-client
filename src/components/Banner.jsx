@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 import dns from "node:dns";
@@ -38,7 +39,7 @@ export default function RootLayout({ children }) {
           <main className="max-w-7xl mx-auto px-2 min-h-screen">
             {children}
           </main>
-           
+           <Footer />
 
         </ThemeProvider>
       </body>
