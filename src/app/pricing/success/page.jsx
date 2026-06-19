@@ -1,3 +1,4 @@
+import { subscription } from '@/lib/action/payment'
 import { stripe } from '@/lib/stripe'
 import { Button } from '@heroui/react'
 import { ArrowRight, CheckCircle2, Mail } from 'lucide-react'
@@ -25,7 +26,7 @@ export default async function Success({ searchParams }) {
 
   if (status === 'complete') {
     // console.log(metadata);
-    
+    await subscription({...metadata, sessionId: session_id})
     
 
 

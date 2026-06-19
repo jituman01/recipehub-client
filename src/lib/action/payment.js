@@ -2,8 +2,8 @@
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
-const subscription = async (data) => {
-  const res = await fetch(`${baseUrl}subscription`, {
+export const subscription = async (data) => {
+  const res = await fetch(`${baseUrl}/subscription`, {
     method: "POST",
     headers:{
       "Content-Type": "application/json"
