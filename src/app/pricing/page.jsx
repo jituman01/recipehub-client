@@ -55,13 +55,9 @@ export default function UserPricingPage() {
   return (
     <main className="bg-background text-foreground min-h-screen">
       
-      {/*  Hero Section */}
       <section className="mx-auto max-w-7xl px-4 py-7 text-center">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-xs font-semibold text-orange-600 dark:bg-orange-950/30 dark:border-orange-900">
-          <ChefHat size={14} /> RecipeHub Memberships
-        </span>
 
-        <h1 className="mt-6 text-4xl font-extrabold tracking-tight md:text-6xl">
+        <h1 className="mt-6 text-2xl font-extrabold tracking-tight md:text-4xl">
           Share Your Culinary Art
           <span className="block text-orange-500 mt-2">
             Reach Thousands of Food Lovers
@@ -112,8 +108,8 @@ export default function UserPricingPage() {
               <div className="mt-8">
                 {plan.name === "Enterprise Plan" || plan.name === "Starter Plan" ? (
             <Button
-            className="mt-8 w-full font-medium bg-transparent"
-            >Contact Sales
+            className="mt-8 w-full text-black dark:text-white bg-transparent "
+            >Not Available
             </Button>
               ) : (
              <form
