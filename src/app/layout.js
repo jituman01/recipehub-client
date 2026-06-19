@@ -2,10 +2,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
-
-import dns from "node:dns";
 import Footer from "@/components/Footer";
-dns.setServers(['1.1.1.1', '1.0.0.1']);
+
+// import dns from "node:dns";
+// dns.setServers(['1.1.1.1', '1.0.0.1']);
 
 const inter = Inter({
   subsets: ["latin"],
