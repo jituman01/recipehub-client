@@ -1,9 +1,11 @@
 import { getAllRecipes } from '@/lib/api/recipe';
 import React from 'react';
 import RecipeCard from '@/components/recipe/RecipeCard';
+import SearchRecipe from '@/components/SearchRecipe';
 
-const RecipesPage = async () => {
-  const recipes = await getAllRecipes() || [];
+const RecipesPage = async ({ searchParams }) => {
+  const { search } = await searchParams;
+  const recipes = await getAllRecipes(search) || [];
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 space-y-8">
@@ -15,6 +17,12 @@ const RecipesPage = async () => {
           Discover delicious, hand-picked culinary arts from passionate chefs around the world.
         </p>
       </div>
+
+      <div>
+        <SearchRecipe />
+      </div>
+      
+      { search && <h2 className='text-black dark:text-white'>Found {recipes.length} Recipes with the search item <b className='text-orange-500'>{search}</b></h2>}
 
       
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
