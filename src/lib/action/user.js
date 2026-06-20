@@ -34,11 +34,7 @@ export const publishRecipe = async (recipeData) => {
     
     return { success: false, msg: responseData.msg || "Failed to publish recipe" };
   } catch (error) {
-    console.error("Error in publishRecipe action:", error);
     return { success: false, msg: "Internal Server Error" };
   }
 };
-
-
-
 
