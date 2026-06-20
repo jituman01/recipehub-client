@@ -8,7 +8,7 @@ export default async function DashboardSidebar() {
   });
 
   const user = session?.user;
-  const role = user?.role || "user"; 
+  const role = user?.role || "user";
 
   return <SidebarUI role={role} />;
 }
