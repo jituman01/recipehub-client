@@ -5,6 +5,7 @@ import { authClient } from "@/lib/auth-client";
 import ManageRecipeTable from "@/components/dashboard/user/ManageRecipeTable";
 import EditRecipeModal from "@/components/dashboard/user/EditRecipeModal";
 import { fetchMyRecipesAction, updateRecipeAction, deleteRecipeAction } from "@/lib/action/recipeActions";
+import toast from "react-hot-toast";
 
 const MyRecipesPage = () => {
     const [recipes, setRecipes] = useState([]);
@@ -53,11 +54,11 @@ const MyRecipesPage = () => {
         setUpdating(false);
 
         if (ok && data.success) {
-            alert("Recipe updated successfully!");
+            toast.success("Recipe updated successfully!");
             setIsModalOpen(false); 
             loadRecipes();
         } else {
-            alert("Update failed");
+            toast.error("Update failed");
         }
     };
 
@@ -66,9 +67,9 @@ const MyRecipesPage = () => {
         
         if (ok && data.success) {
             setRecipes(recipes.filter(recipe => recipe._id !== recipeId));
-            alert("Deleted successfully!");
+            toast.success("Deleted successfully!");
         } else {
-            alert("Delete failed");
+            toast.error("Delete failed");
         }
     };
 

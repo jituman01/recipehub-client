@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 // import dns from "node:dns";
 // dns.setServers(['1.1.1.1', '1.0.0.1']);
@@ -40,7 +41,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
           <Footer/>
-           
+           <Toaster/>
 
         </ThemeProvider>
       </body>
