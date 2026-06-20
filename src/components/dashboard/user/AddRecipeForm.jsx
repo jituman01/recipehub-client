@@ -6,9 +6,13 @@ import { Plus, ArrowUpFromLine, Loader2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { imageUpload } from "@/lib/imageUpload";
 import { addRecipe } from "@/lib/api/recipe";
+import { authClient } from "@/lib/auth-client";
 
 export default function AddRecipeForm() {
   const [loading, setLoading] = useState(false);
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+    // console.log(session,user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,12 +24,15 @@ export default function AddRecipeForm() {
     // console.log("Recipe Data Submitting:", data);
     const image = await imageUpload(data.image);
     // console.log('image',image);
+
+    
   
 
     const recipe = {
       ...data,
-      image: image.url
-    }
+      image: image.url,
+      authorName: user?.name,
+    };
 
     const result = await addRecipe(recipe);
     // console.log(result);
