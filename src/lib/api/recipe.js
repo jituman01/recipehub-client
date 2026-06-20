@@ -3,7 +3,7 @@ import { authClient } from "../auth-client";
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export const addRecipe = async (recipe) => {
-  const { data: token } = await authClient.token(); 
+  const { data: token } = await authClient.token();
   console.log(token.token);
   
 
@@ -20,4 +20,11 @@ export const addRecipe = async (recipe) => {
   const data = await res.json();
   return data;
   
+};
+
+
+export const getAllRecipes = async () => {
+  const res = await fetch(`${baseUrl}/recipes`)
+  const data = await res.json();
+  return data;
 }

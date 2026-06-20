@@ -82,7 +82,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="#"
+                href="/recipes"
                 className="font-medium "
                 aria-current="page"
               >
