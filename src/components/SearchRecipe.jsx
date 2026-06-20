@@ -14,8 +14,8 @@ const SearchRecipe = () => {
   return (
     <div>
       <form onSubmit={onSubmit} >
-        <Input name='search' type='search' placeholder='Search Recipe'></Input>
-      <Button type='submit' size='sm' className={'ml-2'}>Search</Button>
+        <Input className={'lg:w-sm  h-12 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-orange-500'} name='search' type='search' placeholder='Search Recipe'></Input>
+      <Button type='submit' className={'ml-2 bg-orange-500 '}>Search</Button>
       </form>
     </div>
   );

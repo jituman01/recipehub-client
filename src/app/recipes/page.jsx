@@ -18,11 +18,15 @@ const RecipesPage = async ({ searchParams }) => {
         </p>
       </div>
 
-      <div>
+      <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full'>
+        <div>
+        { search && <h2 className='text-gray-600 dark:text-gray-400'>Found {recipes.length} Recipes with the search item <b className='text-orange-500'>{search}</b></h2>}
+        </div>
+        
+        <div>
         <SearchRecipe />
+      </div>    
       </div>
-      
-      { search && <h2 className='text-black dark:text-white'>Found {recipes.length} Recipes with the search item <b className='text-orange-500'>{search}</b></h2>}
 
       
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
