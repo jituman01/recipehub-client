@@ -25,10 +25,8 @@ const Navbar = () => {
     setMounted(true);
   }, []);
 
-  const pathname = usePathname();
-  if (pathname.includes('dashboard')) {
-    return null;
-  }
+  // const pathname = usePathname();
+  
 
 
   const handleSignOut = async () => {
@@ -89,6 +87,17 @@ const Navbar = () => {
                 Browse Recipe
               </Link>
             </li>
+          {user && (
+            <li>
+              <Link
+                href={`/dashboard/${user?.role}`}
+                className="font-medium "
+                aria-current="page"
+              >
+                Dashboard
+              </Link>
+            </li>
+            )}
             
           </ul>
           {/* RIGHT SIDE ACTIONS: THEME TOGGLE */}

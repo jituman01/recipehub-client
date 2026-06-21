@@ -50,7 +50,7 @@ export default function SidebarUI({ role }) {
             key={item.label}
             href={item.link}
             className="w-full"
-            onClick={() => setOpen(false)} 
+            onClick={() => setOpen(false)}
           >
             <button
               type="button"
@@ -92,12 +92,10 @@ export default function SidebarUI({ role }) {
         </div>
       </header>
 
-      <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-72 flex-col border-r border-divider bg-background p-6 z-40 shrink-0">
+      <aside className="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-72 flex-col border-r border-divider bg-background p-6 z-40 shrink-0">
         <div className="border-b border-divider pb-5 mb-5">
-          <p className="font-extrabold text-2xl">
-            <span className="text-orange-500">Recipe</span>Hub
-          </p>
-          <p className="text-xs text-default-400 font-medium mt-1 uppercase tracking-wider">
+          
+          <p className="text-xs text-default-400 font-bold mt-1 uppercase tracking-wider">
             {role} Dashboard
           </p>
         </div>
