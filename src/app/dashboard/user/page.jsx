@@ -2,19 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { Button, Card } from "@heroui/react";
-import { ChefHat, Crown, Heart, ThumbsUp } from "lucide-react"; 
+import { CheckCircle, ChefHat, Crown, Heart, ThumbsUp } from "lucide-react";
+import { GiQueenCrown } from "react-icons/gi"; 
 import { authClient } from "@/lib/auth-client"; 
 import Link from "next/link";
 
 const UserOverviewPage = () => {
 
-    const isPremium = false;
 
     const [stats, setStats] = useState({ totalRecipes: 0, totalFavorites: 0, totalLikesReceived: 0 });
     const [loading, setLoading] = useState(true);
 
     const { data: session } = authClient.useSession();
     const user = session?.user;
+
+    const isPremium = user?.plan === "pro";
+
 
     useEffect(() => {
         const fetchOverviewData = async () => {
@@ -100,7 +103,7 @@ const UserOverviewPage = () => {
 
             </div>
 
-            {!isPremium && (
+            {!isPremium ? (
                 <Card className="border border-orange-500/20 bg-gradient-to-r from-orange-500/5 via-amber-600/5 to-orange-500/5 dark:to-transparent relative overflow-hidden shadow-sm" radius="lg">
                     <div className="p-8 flex flex-col md:flex-row items-center justify-between gap-6 z-10">
                         <div className="space-y-2">
@@ -112,10 +115,33 @@ const UserOverviewPage = () => {
                             </p>
                         </div>
                         <Link href='/pricing'>
-                        <Button className="bg-orange-500 hover:bg-orange-600 dark:hover:bg-orange-400 text-white dark:text-white font-bold h-11 px-6 shadow-md shadow-orange-500/20 shrink-0" radius="lg">
-                            Upgrade to Pro
+                            <Button className="bg-orange-500 hover:bg-orange-600 dark:hover:bg-orange-400 text-white dark:text-white font-bold h-11 px-6 shadow-md shadow-orange-500/20 shrink-0" radius="lg">
+                                Upgrade to Pro
                             </Button>
                         </Link>
+                    </div>
+                </Card>
+            ) : (
+                <Card className="border border-orange-500/20 bg-gradient-to-r from-yellow-500/10 via-yellow-400/20 to-transparent relative overflow-hidden shadow-sm" radius="lg">
+                    <div className="p-8 flex flex-col md:flex-row items-center justify-between gap-6 z-10">
+                            <div className="space-y-2">
+                                <div className="flex space-x-4">
+                                <span>
+                                    <GiQueenCrown className="text-orange-500 dark:text-orange-400 w-18 h-18 " />
+                                </span>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-foreground dark:text-white flex items-center gap-2">
+                                 Premium Membership Activated
+                            </h3>
+                            <p className="text-default-500 dark:text-slate-400 text-xs max-w-xl leading-relaxed">
+                                Thank you for being a premium member, <span className="font-bold text-orange-500">{user?.name}</span>! Enjoy unlimited recipe creations, prioritized search results, and full elite features.
+                            </p>
+                                    </div>
+                            </div>
+                        </div>
+                        <div  className=" text-orange-600 font-bold  shrink-0 opacity-100 flex items-center gap-1.5" radius="lg">
+                            <CheckCircle size={16} /> Verified Pro Account
+                        </div>
                     </div>
                 </Card>
             )}
