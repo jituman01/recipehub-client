@@ -37,11 +37,11 @@ export async function POST(request) {
         },
       ],
       metadata: {
-        price: Number(price),
-        userId: user?.id,
-        userEmail: user?.email,
-        recipeName,
-        recipeId,
+        price: price || '4.99',
+        userId: user?.id || "",
+        userEmail: user?.email || "",
+        recipeName: recipeName || "",
+        recipeId: recipeId || "",
 
       },
 

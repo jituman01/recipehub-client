@@ -2,8 +2,8 @@
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
-export const payment = async (data) => {
-  const res = await fetch(`${baseUrl}/payment`, {
+export const subscription = async (data) => {
+  const res = await fetch(`${baseUrl}/subscription`, {
     method: "POST",
     headers:{
       "Content-Type": "application/json"
