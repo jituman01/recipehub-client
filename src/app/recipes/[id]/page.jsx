@@ -78,13 +78,19 @@ const RecipeDetailsPage = async ({ params }) => {
 
         {/* Stripe Purchase Button */}
         <div className="w-full sm:w-auto">
-          <Button 
+            <form action={'/api/payment'} method='POST'>
+              <input type="hidden" value="4.99" name="price" />
+              <input type="hidden" value={recipe.recipeName} name="recipeName" />
+              <input type="hidden" value={recipe.recipeId} name="recipeId" />
+              <Button
+              type='submit'  
             color="success" 
             className="w-full sm:w-auto bg-emerald-600 text-white font-black px-6 py-6 rounded-2xl shadow-lg shadow-emerald-600/20 flex items-center gap-2 text-sm uppercase tracking-wider"
             startContent={<CreditCard size={18} />}
           >
             Purchase Recipe ($4.99)
           </Button>
+          </form>
         </div>
       </div>
 
