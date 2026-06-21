@@ -7,13 +7,15 @@ import toast from "react-hot-toast";
 import { imageUpload } from "@/lib/imageUpload";
 import { addRecipe } from "@/lib/api/recipe";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function AddRecipeForm() {
   const [loading, setLoading] = useState(false);
   const { data: session } = authClient.useSession();
   const user = session?.user;
     // console.log(session,user);
-
+  const router = useRouter();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -36,6 +38,13 @@ export default function AddRecipeForm() {
 
     const result = await addRecipe(recipe);
     // console.log(result);
+    if (result && result.success === false) {
+      setLoading(false);
+      toast.error(result.msg || "Free limit exceeded!"); 
+      
+      router.push("/pricing"); 
+      return;
+    }
     
     
 
@@ -43,7 +52,7 @@ export default function AddRecipeForm() {
       setLoading(false);
       toast.success("Recipe added successfully!");
       e.target.reset();
-    }, 1500);
+    },);
   };
 
   return (
