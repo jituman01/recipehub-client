@@ -81,7 +81,7 @@ export default function Banner() {
         >
           {/* Floating Leaf Particles For Better Visual Impact */}
           <div className="absolute top-10 left-5 w-6 h-6 bg-emerald-500/20 rounded-full blur-sm animate-bounce"></div>
-          <div className="absolute bottom-16 right-10 w-4 h-4 bg-lime-500/30 rounded-full blur-xs animate-pulse"></div>
+          <div className="absolute bottom-16 right-10 w-6 h-4 bg-lime-500/30 rounded-full blur-xs animate-pulse"></div>
 
           <Image
             src="/banner.png"

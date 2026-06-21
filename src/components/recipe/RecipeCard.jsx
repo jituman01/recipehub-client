@@ -3,6 +3,7 @@
 import React from "react";
 import { Button } from "@heroui/react";
 import { ChefHat, Clock, Globe, User } from "lucide-react";
+import Link from "next/link";
 
 const RecipeCard = ({ recipe }) => {
     const title = recipe.recipeName || "Untitled Recipe";
@@ -74,13 +75,16 @@ const RecipeCard = ({ recipe }) => {
                 <div className="border-t border-default-100 dark:border-white/5 pt-4 mt-2 space-y-3">
                     
 
-                    <Button 
+                    <Link  href={`/recipes/${recipe._id}`} className="w-full">
+                        <Button
+                         as={Link}   
                         size="md" 
                         className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-md shadow-orange-500/10 flex items-center gap-2"
-                    >
-                        <ChefHat size={16} />
-                        View Details
-                    </Button>
+                        >
+                            <ChefHat size={16} />
+                            View Details
+                        </Button>
+                        </Link>
                 </div>
             </div>
 
