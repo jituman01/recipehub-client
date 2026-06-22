@@ -81,7 +81,9 @@ const RecipeDetailsPage = async ({ params }) => {
             <form action={'/api/payment'} method='POST'>
               <input type="hidden" value="4.99" name="price" />
               <input type="hidden" value={recipe.recipeName} name="recipeName" />
-              <input type="hidden" value={recipe._id || id} name="recipeId" />
+              <input type="hidden" value={recipe._id} name="recipeId" />
+              <input type="hidden" value={recipe.image} name="image" />
+              <input type="hidden" value={recipe.authorName} name="authorName" />
               <Button
               type='submit'  
             color="success" 

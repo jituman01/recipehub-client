@@ -26,9 +26,9 @@ export default function SidebarUI({ role }) {
       { icon: Home, label: "Overview", link: "/dashboard/user" },
       { icon: BookAIcon, label: "My Recipes", link: "/dashboard/user/my-recipes" },
       { icon: Plus, label: "Add Recipe", link: "/dashboard/user/add-recipe" },
-      { icon: Heart, label: "My Favorites", link: "/dashboard/favorites" },
-      { icon: ShoppingCart, label: "My Purchased Recipes", link: "/dashboard/purchased-recipe" },
-      { icon: User, label: "Profile", link: "/dashboard/profile" },
+      { icon: Heart, label: "My Favorites", link: "/dashboard/user/my-favourites" },
+      { icon: ShoppingCart, label: "My Purchased Recipes", link: "/dashboard/user/purchased-recipes" },
+      { icon: User, label: "Profile", link: "/dashboard/user/profile" },
     ],
     admin: [
       { icon: Home, label: "Overview", link: "/dashboard/admin" },

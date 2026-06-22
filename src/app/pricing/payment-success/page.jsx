@@ -31,6 +31,9 @@ export default async function Success({ searchParams }) {
     userId: metadata?.userId || "",
     amount: metadata?.price || 4.99,
     recipeId: metadata?.recipeId || "",
+    recipeName: metadata?.recipeName ,
+    image: metadata?.image,
+      authorName: metadata?.authorName || "Anonymous",
     transactionId: session_id,
     paymentStatus: "paid",
     paidAt: new Date().toISOString()

@@ -17,6 +17,8 @@ export async function POST(request) {
     const price = formData.get('price');
     const recipeName = formData.get('recipeName');
     const recipeId = formData.get('recipeId');
+    const image = formData.get('image');
+    const authorName = formData.get('authorName');
     
 
 
@@ -42,6 +44,8 @@ export async function POST(request) {
         userEmail: user?.email || "",
         recipeName: recipeName || "",
         recipeId: recipeId || "",
+        image: image || "",
+        authorName: authorName || "",
 
       },
 
