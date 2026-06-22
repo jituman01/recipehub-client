@@ -50,27 +50,27 @@ const MyPurchasedRecipePage = () => {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-divider">
-                            {purchasedRecipes.map((item) => (
-                                <tr key={item._id} className="text-sm hover:bg-default-50/30 transition-colors">
+                            {purchasedRecipes.map((recipe) => (
+                                <tr key={recipe._id} className="text-sm hover:bg-default-50/30 transition-colors">
                                     <td className="py-4 px-6 flex items-center gap-4">
                                         <div className="w-12 h-12 rounded-lg overflow-hidden border border-divider shrink-0">
                                             <img
-                                                src={item.image || "/fallback.jpg"}
-                                                alt={item.recipeName}
+                                                src={recipe.image}
+                                                alt={recipe.recipeName}
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>
                                         <span className="font-bold text-slate-800 dark:text-zinc-200">
-                                            {item.recipeName || "Premium Recipe"}
+                                            {recipe.recipeName}
                                         </span>
                                     </td>
                                     
                                     <td className="py-4 px-6 text-default-500 font-medium">
-                                        {item.authorName || "Anonymous"}
+                                        {recipe.authorName}
                                     </td>
                                     
                                     <td className="py-4 px-6 font-black text-slate-900 dark:text-zinc-100">
-                                        {item.amount ? `$${item.amount}` : "$4.99"}
+                                        {recipe.amount ? `$${recipe.amount}` : "$4.99"}
                                     </td>
                                     
                       
