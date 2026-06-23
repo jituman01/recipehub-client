@@ -21,3 +21,21 @@ export const addToFavoriteAction = async (userId, userEmail, recipeId) => {
     return data;
 
 };
+
+
+
+
+export const fetchFavoriteRecipesAction = async (userId) => {
+    const res = await fetch(`${baseUrl}/user/favorites?userId=${userId}`, {
+        method: "GET",
+        headers: { 
+            "Content-Type": "application/json" 
+        }
+    });
+    
+    if (res.ok) {
+        return await res.json();
+    }
+    
+    return [];
+};
