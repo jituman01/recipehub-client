@@ -32,10 +32,10 @@ export default function SidebarUI({ role }) {
     ],
     admin: [
       { icon: Home, label: "Overview", link: "/dashboard/admin" },
-      { icon: Users2, label: "Total Users", link: "/dashboard/total-users" },
-      { icon: BookAIcon, label: "Total Recipes", link: "/dashboard/total-recipes" },
-      { icon: User, label: "Total Premium Members", link: "/dashboard/total-premium-members" },
-      { icon: FileText, label: "Total Reports", link: "/dashboard/total-reports" },
+      { icon: Users2, label: "Manage Users", link: "/dashboard/manage-users" },
+      { icon: BookAIcon, label: "Manage Recipes", link: "/dashboard/manage-recipes" },
+      { icon: User, label: "Recipe Reports", link: "/dashboard/recipe-reports" },
+      { icon: FileText, label: "Transactions", link: "/dashboard/transactions" },
     ],
   };
 
