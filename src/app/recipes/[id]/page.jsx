@@ -1,9 +1,8 @@
-// 📂 PATH: app/recipes/[id]/page.jsx
 import { getRecipeById } from '@/lib/api/recipe';
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { Button } from "@heroui/react";
-import { Heart, ThumbsUp, AlertTriangle, Clock, Utensils, Award, CreditCard, CheckCircle } from "lucide-react";
+import { Clock, Utensils, Award, CheckCircle, Heart, Flag } from "lucide-react";
+import RecipeFavoriteButton from '@/components/recipe/RecipeFavoriteButton';
 
 const RecipeDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -18,9 +17,9 @@ const RecipeDetailsPage = async ({ params }) => {
     : [];
 
   return (
-    <div className=" container mx-auto px-4 py-8 max-w-6xl space-y-6 pb-12">
+    <div className="container mx-auto px-4 py-8 max-w-6xl space-y-6 pb-12">
       
-      {/* ১. banner*/}
+      {/* banner*/}
       <div className="relative h-[300px] sm:h-[600px] w-full rounded-3xl overflow-hidden shadow-md">
         <img 
           src={recipe.image || "https://placehold.co/600x400"} 
@@ -40,84 +39,74 @@ const RecipeDetailsPage = async ({ params }) => {
         </div>
       </div>
 
-      {/*  (Like Count, Purchase, Like, Favorite, Report) */}
-      <div className='space-y-5'>
-        <div className="flex flex-col sm:flex-row gap-4 items-center justify-between bg-white dark:bg-slate-900 border border-default-200 p-5 rounded-3xl shadow-sm">
-        
-        <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto justify-center sm:justify-start">
-          {/* Like Count & Like Button */}
-          <Button 
-            variant="flat" 
-            color="primary" 
-            className="font-bold"
-            startContent={<ThumbsUp size={18} fill="currentColor" />}
-          >
-            {recipe.likes || 12} Likes
-          </Button>
-
-          {/*  Favorite Button */}
-          <Button 
-            isIconOnly 
-            variant="flat" 
-            color="danger"
-            title="Add to Favorite"
-          >
-            <Heart size={20} />
-          </Button>
-
-          {/* Report Button (Will show modal) */}
-          <Button 
-            isIconOnly 
-            variant="flat" 
-            color="warning"
-            title="Report Recipe"
-          >
-            <AlertTriangle size={20} />
-          </Button>
-        </div>
-
-        {/* Stripe Purchase Button */}
-        <div className="w-full sm:w-auto">
-            <form action={'/api/payment'} method='POST'>
-              <input type="hidden" value="4.99" name="price" />
-              <input type="hidden" value={recipe.recipeName} name="recipeName" />
-              <input type="hidden" value={recipe._id} name="recipeId" />
-              <input type="hidden" value={recipe.image} name="image" />
-              <input type="hidden" value={recipe.authorName} name="authorName" />
-              <Button
-              type='submit'  
-            color="success" 
-            className="w-full sm:w-auto bg-emerald-600 text-white font-black px-6 py-6 rounded-2xl shadow-lg shadow-emerald-600/20 flex items-center gap-2 text-sm uppercase tracking-wider"
-            startContent={<CreditCard size={18} />}
-          >
-            Purchase Recipe ($4.99)
-          </Button>
-          </form>
-        </div>
-      </div>
-
-      {/* (Necessary Information: Time, Cuisine, Difficulty) */}
+      {/*  Necessary Information: Time, Cuisine, Difficulty */}
       <div className="grid grid-cols-3 gap-4 text-center">
-        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400">
+        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400/40">
           <Clock size={20} className="text-orange-500 mx-auto mb-1" />
           <p className="text-[10px] text-default-400 font-semibold uppercase">Prep Time</p>
           <p className="text-sm font-bold">{recipe.prepTime || "N/A"} mins</p>
         </div>
         
-        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400">
+        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400/40">
           <Utensils size={20} className="text-orange-500 mx-auto mb-1" />
           <p className="text-[10px] text-default-400 font-semibold uppercase">Cuisine</p>
           <p className="text-sm font-bold capitalize">{recipe.cuisineType || "International"}</p>
         </div>
         
-        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400">
+        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400/40">
           <Award size={20} className="text-orange-500 mx-auto mb-1" />
           <p className="text-[10px] text-default-400 font-semibold uppercase">Difficulty</p>
           <p className="text-sm font-bold capitalize">{recipe.difficulty || "Easy"}</p>
         </div>
       </div>
 
-      {/* (Ingredients) &(Instructions) */}
+            <div className="w-full bg-white dark:bg-slate-900 border border-default-200 dark:border-white/10 p-6 rounded-3xl shadow-sm space-y-4">
+        <span className="text-[11px] font-bold text-gray-400 dark:text-gray-500 tracking-wider uppercase block">
+          Actions
+        </span>
+
+        {/* Like Button */}
+        <button 
+          type="button"
+          className="w-full flex items-center justify-center gap-2 border border-gray-200 dark:border-white/10 rounded-xl py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+        >
+          <Heart size={16} className="text-slate-800 dark:text-slate-200" />
+          <span>Like ({recipe.likes || 119})</span>
+        </button>
+
+        {/*  Favorites  */}
+        <RecipeFavoriteButton recipeId={recipe._id} />
+
+
+        {/* Report Issue  */}
+        <div className="text-center pt-2">
+          <button 
+            type="button"
+            className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 font-medium transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+          >
+            <Flag size={13} /> Report Issue
+          </button>
+        </div>
+      </div>
+
+        {/* Purchase Details Button*/}
+      <div>
+        <form action={'/api/payment'} method='POST' className="w-full">
+          <input type="hidden" value="4.99" name="price" />
+          <input type="hidden" value={recipe.recipeName} name="recipeName" />
+          <input type="hidden" value={recipe._id} name="recipeId" />
+          <input type="hidden" value={recipe.image} name="image" />
+          <input type="hidden" value={recipe.authorName} name="authorName" />
+          <button 
+            type="submit"
+            className="w-full bg-orange-500 dark:bg-orange-800 hover:bg-orange dark:hover:bg-orange-700 text-white font-medium rounded-xl py-3 text-sm transition-colors shadow-sm cursor-pointer text-center block"
+          >
+            Purchase Recipe
+          </button>
+        </form>
+      </div>
+
+      {/*  Ingredients & Instructions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {/* Ingredients Card */}
@@ -147,7 +136,6 @@ const RecipeDetailsPage = async ({ params }) => {
           </p>
         </div>
 
-      </div>
       </div>
 
     </div>
