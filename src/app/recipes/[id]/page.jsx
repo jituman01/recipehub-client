@@ -3,6 +3,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { Clock, Utensils, Award, CheckCircle, Heart, Flag } from "lucide-react";
 import RecipeFavoriteButton from '@/components/recipe/RecipeFavoriteButton';
+import RecipeLikeButton from '@/components/recipe/RecipeLikeButton';
 
 const RecipeDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -66,13 +67,7 @@ const RecipeDetailsPage = async ({ params }) => {
         </span>
 
         {/* Like Button */}
-        <button 
-          type="button"
-          className="w-full flex items-center justify-center gap-2 border border-gray-200 dark:border-white/10 rounded-xl py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-        >
-          <Heart size={16} className="text-slate-800 dark:text-slate-200" />
-          <span>Like ({recipe.likes || 119})</span>
-        </button>
+        <RecipeLikeButton recipeId={recipe._id} initialLikes={recipe.likesCount || 0} />
 
         {/*  Favorites  */}
         <RecipeFavoriteButton recipeId={recipe._id} />
