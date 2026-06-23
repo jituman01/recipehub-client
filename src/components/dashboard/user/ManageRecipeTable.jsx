@@ -95,7 +95,7 @@ const ManageRecipeTable = ({ recipes = [], onEdit, onDelete }) => {
                   <td className="py-4 px-6">
                     <div className="flex items-center gap-1 text-sm font-semibold text-foreground">
                       <span className="text-rose-500">❤️</span>
-                      <span>{recipe.likes || 0}</span>
+                      <span>{recipe.likesCount || 0}</span>
                     </div>
                   </td>
 
