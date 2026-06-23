@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { Clock, Utensils, Award, CheckCircle, Heart, Flag } from "lucide-react";
 import RecipeFavoriteButton from '@/components/recipe/RecipeFavoriteButton';
 import RecipeLikeButton from '@/components/recipe/RecipeLikeButton';
+import RecipeReportButton from '@/components/recipe/RecipeReportButton';
 
 const RecipeDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -74,14 +75,7 @@ const RecipeDetailsPage = async ({ params }) => {
 
 
         {/* Report Issue  */}
-        <div className="text-center pt-2">
-          <button 
-            type="button"
-            className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 font-medium transition-colors inline-flex items-center gap-1.5 cursor-pointer"
-          >
-            <Flag size={13} /> Report Issue
-          </button>
-        </div>
+        <RecipeReportButton recipeId={recipe._id} />
       </div>
 
         {/* Purchase Details Button*/}
