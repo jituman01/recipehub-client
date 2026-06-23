@@ -75,7 +75,7 @@ const RecipeDetailsPage = async ({ params }) => {
 
 
         {/* Report Issue  */}
-        <RecipeReportButton recipeId={recipe._id} />
+        <RecipeReportButton recipeId={recipe._id} recipeName={recipe.recipeName} />
       </div>
 
         {/* Purchase Details Button*/}

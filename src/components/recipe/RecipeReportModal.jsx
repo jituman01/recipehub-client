@@ -73,7 +73,7 @@ export default function RecipeReportModal({
             <p className="text-xs text-white dark:text-slate-500 font-medium tracking-wide">
               Reporting:
             </p>
-            <p className="text-sm font-semibold truncate text-slate-800 dark:text-slate-200">
+            <p className="text-sm font-semibold truncate text-yellow-500 dark:text-slate-200">
               {recipeName}
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function RecipeReportModal({
                   className={`flex items-center gap-3 border rounded-xl p-4 cursor-pointer transition-all duration-200 ${
                     selectedReason === item.id
                       ? 'border-orange-500 bg-orange-50/60 dark:bg-orange-950/30 shadow-inner'
-                      : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                      : 'border-slate-200 dark:border-slate-800 hover:border-orange-500 dark:border-orange-500'
                   }`}
                 >
                   <input
