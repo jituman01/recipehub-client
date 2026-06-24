@@ -15,7 +15,9 @@ import {
   User,
   Users2,
   FileText,
+  LogOut,
 } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
 export default function SidebarUI({ role }) {
   const [open, setOpen] = useState(false);
@@ -40,6 +42,8 @@ export default function SidebarUI({ role }) {
   };
 
   const navItems = dashboardItems[role] || dashboardItems.user;
+
+  
 
   const NavLinks = () => (
     <nav className="flex flex-col gap-1.5 w-full">
@@ -74,6 +78,10 @@ export default function SidebarUI({ role }) {
     </nav>
   );
 
+    const handleSignOut = async () => {
+      await authClient.signOut();
+    };
+
   return (
     <>
       <header className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-background border-b border-divider z-50">
@@ -100,6 +108,17 @@ export default function SidebarUI({ role }) {
           </p>
         </div>
         <NavLinks />
+        <div className="border-t border-divider pt-4 mt-4">
+        <button
+        variant="outline"
+      type="button"
+      onClick={handleSignOut}
+      className="flex w-full items-center gap-3 rounded-xl px-4  text-left text-sm font-semibold text-red-500 dark:text-red-500 cursor-pointer hover:text-red-600 transition-all duration-200 mt-auto"
+    >
+      <LogOut size={20} className="flex-shrink-0 hover:text-red-600  text-red-500" />
+      <span className="truncate">Logout</span>
+        </button>
+        </div>
       </aside>
 
       <Drawer isOpen={open} onOpenChange={setOpen}>

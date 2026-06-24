@@ -39,3 +39,19 @@ export const fetchFavoriteRecipesAction = async (userId) => {
     
     return [];
 };
+
+
+export const removeFavoriteRecipeAction = async (userId, recipeId) => {
+
+    const res = await fetch(`${baseUrl}/favorites/remove`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId, recipeId }),
+    });
+
+    if (res.ok) return await res.json();
+    return { success: false, message: "Failed to remove favorite" };
+
+};

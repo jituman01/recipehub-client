@@ -5,29 +5,43 @@ import { Button, Card } from '@heroui/react';
 import { authClient } from '@/lib/auth-client';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
-import { fetchFavoriteRecipesAction } from '@/lib/action/favorite';
+import { fetchFavoriteRecipesAction, removeFavoriteRecipeAction } from '@/lib/action/favorite';
 
 const MyFavoritesPage = () => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [removingId, setRemovingId] = useState(null);
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  const currentUserId = user?.id || user?._id;
 
   const loadFavoriteRecipes = async () => {
-    const currentUserId = user?.id || user?._id;
     if (!currentUserId) return;
-
     const data = await fetchFavoriteRecipesAction(currentUserId);
     setFavoriteRecipes(data || []);
     setLoading(false);
   };
 
   useEffect(() => {
-    if (user?.id || user?._id) {
+    if (currentUserId) {
       loadFavoriteRecipes();
     }
-  }, [user]);
+  }, [currentUserId]);
+
+  const handleRemoveFavorite = async (recipeId) => {
+    if (!currentUserId || !recipeId) return;
+
+
+    setRemovingId(recipeId);
+
+    const result = await removeFavoriteRecipeAction(currentUserId, recipeId);
+
+    if (result.success) {
+      setFavoriteRecipes((prev) => prev.filter((recipe) => recipe._id !== recipeId));
+    } 
+    setRemovingId(null);
+  };
 
   return (
     <div className="space-y-6 pb-10 mt-6">
@@ -71,7 +85,6 @@ const MyFavoritesPage = () => {
                     {recipe.recipeName}
                   </h3>
                   
-                  
                   <div className="flex items-center gap-1 mt-1.5 font-bold text-sm">
                     <p>Total Like:</p>
                     <Heart className='text-red-500' size={14} fill="currentColor" />
@@ -93,6 +106,8 @@ const MyFavoritesPage = () => {
                     size="md"
                     variant="flat"
                     color="danger"
+                    isLoading={removingId === recipe._id}
+                    onClick={() => handleRemoveFavorite(recipe._id)}
                     className="font-bold rounded-xl bg-rose-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-200"
                   >
                     Remove
