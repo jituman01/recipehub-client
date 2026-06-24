@@ -14,6 +14,7 @@ import {
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -36,6 +37,7 @@ export default function SignInPage() {
         setLoading(true);
       },
       onSuccess: () => {
+        toast.success('Successfully logged in!');
         setLoading(false);
         router.push('/');
         router.refresh();

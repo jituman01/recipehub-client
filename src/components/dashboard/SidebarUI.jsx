@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Bars } from "@gravity-ui/icons";
 import { Button, Drawer } from "@heroui/react";
 
@@ -18,10 +18,12 @@ import {
   LogOut,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 export default function SidebarUI({ role }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const router=useRouter()
 
   const dashboardItems = {
     user: [
@@ -79,8 +81,17 @@ export default function SidebarUI({ role }) {
   );
 
     const handleSignOut = async () => {
-      await authClient.signOut();
-    };
+
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          toast.success("Logged out successfully!");
+          router.push("/signin"); 
+          router.refresh();
+        },
+      },
+    });
+  };
 
   return (
     <>

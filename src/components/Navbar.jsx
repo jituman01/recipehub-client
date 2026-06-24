@@ -6,20 +6,20 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState,useEffect } from "react";
+import toast from "react-hot-toast";
 import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { MdDashboard } from "react-icons/md";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const { data: session } = authClient.useSession();
   const user = session?.user;
-
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -30,8 +30,17 @@ const Navbar = () => {
 
 
   const handleSignOut = async () => {
-    await authClient.signOut();
-  };
+  
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            toast.success("Logged out successfully!");
+            router.push("/signin"); 
+            router.refresh();
+          },
+        },
+      });
+    };
   return (
     
       <nav className="sticky top-0 z-50 w-full border-b border-separator bg-transparent backdrop-blur-lg">
