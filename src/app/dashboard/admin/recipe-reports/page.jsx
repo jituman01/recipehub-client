@@ -36,8 +36,10 @@ const RecipeReportsPage = () => {
   const handleRemoveRecipe = async (recipeId, reportId) => {
     const result = await removeRecipeAndReportAction(recipeId, reportId);
     if (result.success) {
-      toast.success("Recipe and report removed successfully! 🗑️");
+      toast.success("Recipe and report removed successfully!");
       setReports((prev) => prev.filter((report) => report._id !== reportId));
+    } else {
+      toast.error(result.message || "Something went wrong");
     }
   };
 
@@ -46,6 +48,8 @@ const RecipeReportsPage = () => {
     if (result.success) {
       toast.success("Report dismissed successfully");
       setReports((prev) => prev.filter((report) => report._id !== reportId));
+    } else {
+      toast.error(result.message || "Something went wrong");
     }
   };
 
@@ -66,7 +70,7 @@ const RecipeReportsPage = () => {
             <TableContent aria-label="Recipe reports management table" className="min-w-[800px]">
               
               <TableHeader>
-                <TableColumn isRowHeader className="font-bold text-default-500">Recipe ID</TableColumn>
+                <TableColumn isRowHeader className="font-bold text-default-500">Recipe NAME</TableColumn>
                 <TableColumn className="font-bold text-default-500">Reporter</TableColumn>
                 <TableColumn className="font-bold text-default-500">Reason</TableColumn>
                 <TableColumn className="font-bold text-default-500">Description</TableColumn>
@@ -78,8 +82,8 @@ const RecipeReportsPage = () => {
                 {reports.map((recipe) => (
                   <TableRow key={recipe._id} className="border-b border-default-100 last:border-none">
                     
-                    <TableCell className="font-mono text-xs text-default-600">
-                      {recipe.recipeId}
+                    <TableCell className="font-mono text-bold dark:text-white text-black">
+                      {recipe.recipeName}
                     </TableCell>
 
                     <TableCell className="font-medium text-sm text-default-700">
@@ -93,7 +97,7 @@ const RecipeReportsPage = () => {
                         size="sm"
                         variant="primary"
                       >
-                        {recipe.reason || 'Spam'}
+                        {recipe.reason}
                       </Chip>
                     </TableCell>
 
