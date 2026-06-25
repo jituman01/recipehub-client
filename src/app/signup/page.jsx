@@ -19,10 +19,12 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { BiDish } from 'react-icons/bi';
 import toast from 'react-hot-toast';
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignUpPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -51,14 +53,29 @@ export default function SignUpPage() {
       setLoading(false);
     }
   };
+
+
+  const handleGoogleSignIn = async () => {
+    setGoogleLoading(true);
+    try {
+      await authClient.signIn.social({
+        provider: 'google',
+        callbackURL: '/',
+      });
+    } catch (error) {
+      setGoogleLoading(false);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center p-4  sm:p-8 max-w-xl mx-auto  mb-20">
-      <div className="w-full rounded-2xl border border-gray-300 dark:border-zinc-800/80 bg-white dark:bg-transparent backdrop-blur-3xl p-6 sm:p-8 transition-colors duration-300">
+      <div className="w-full rounded-4xl border border-yellow-200 dark:border-yellow-900 bg-white dark:bg-white/10 backdrop-blur-3xl px-6 sm:p-8 transition-colors duration-300 shadow-2xl shadow-yellow-200 dark:shadow-yellow-900">
         <Form onSubmit={onSubmit} className="space-y-6">
           <Fieldset className="w-full space-y-2">
             {/* Header Section */}
             <div className="text-center space-y-1 mb-4">
-              <Fieldset.Legend className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              {/* <p className="font-extrabold text-2xl "><span className="text-yellow-500">Recipe</span>Hub</p> */}
+              <Fieldset.Legend className="text-2xl font-extrabold text-yellow-500  tracking-tight">
                 Create Account
               </Fieldset.Legend>
               <Description className="text-sm text-slate-500 dark:text-zinc-400">
@@ -74,9 +91,9 @@ export default function SignUpPage() {
                   Full Name
                 </Label>
                 <Input
-                  placeholder="John Doe"
+                  placeholder="Enter Your Name"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
+                  className="w-full bg-gray-150 dark:bg-black border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                 />
                 <FieldError className="text-xs text-rose-500 mt-1" />
               </TextField>
@@ -92,9 +109,9 @@ export default function SignUpPage() {
                   Email Address
                 </Label>
                 <Input
-                  placeholder="Enter Your Name"
+                  placeholder="Enter Your Email"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
+                  className="w-full bg-gray-150 dark:bg-black border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                 />
                 <FieldError className="text-xs text-rose-500 mt-1" />
               </TextField>
@@ -107,7 +124,7 @@ export default function SignUpPage() {
                 <Input
                   placeholder="Enter Your Image URL"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
+                  className="w-full bg-gray-150 dark:bg-black border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                 />
                 <FieldError className="text-xs text-rose-500 mt-1" />
               </TextField>
@@ -125,7 +142,7 @@ export default function SignUpPage() {
                 <Input
                   placeholder="Enter Your Password"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
+                  className="w-full bg-gray-150 dark:bg-black border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                   minLength={6}
                   pattern="^(?=.*[a-z])(?=.*[A-Z]).+$"
                   title="Password must be at least 6 characters long, contain at least one uppercase letter and one lowercase letter."
@@ -135,7 +152,7 @@ export default function SignUpPage() {
             </Fieldset.Group>
 
             {/* Submit Button with yellow Gradient Accent */}
-            <div className="pt-4">
+            <div className="">
               <Button
                 type="submit"
                 isDisabled={loading}
@@ -144,9 +161,29 @@ export default function SignUpPage() {
                 {loading ? 'Creating Account...' : 'Sign Up'}
               </Button>
             </div>
+            {/*  OR Divider Layout */}
+            <div className="flex items-center">
+              <div className="flex-grow border-t border-gray-300 dark:border-zinc-700"></div>
+              <span className="mx-4 text-xs text-gray-400 font-medium">OR</span>
+              <div className="flex-grow border-t border-gray-300 dark:border-zinc-700"></div>
+            </div>
+
+            {/* Google Login Button */}
+            <div>
+              <Button
+                type="button"
+                onClick={handleGoogleSignIn}
+                isDisabled={loading || googleLoading}
+                variant="bordered"
+                className="w-full bg-transparent border border-gray-300 dark:border-zinc-700 text-slate-700 dark:text-zinc-300 font-semibold rounded-xl active:scale-[0.98] transition-all text-center text-sm flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800/30"
+              >
+                <FcGoogle size={20} />
+                {googleLoading ? 'Connecting to Google...' : 'Sign up with Google'}
+              </Button>
+            </div>
 
             {/* Bottom Redirect Link */}
-            <p className="text-center text-xs text-slate-500 dark:text-zinc-400 pt-4">
+            <p className="text-center text-xs text-slate-500 dark:text-zinc-400">
               Already have an account?{' '}
               <Link
                 href="/signin"
