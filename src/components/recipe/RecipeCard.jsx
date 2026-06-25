@@ -16,13 +16,13 @@ const RecipeCard = ({ recipe }) => {
     const authorName = recipe.authorName || recipe.userName || "Anonymous User";
 
     const difficultyColors = {
-        easy: "bg-success-50 text-success-600 dark:bg-success-900/30 dark:text-success-400 border-success-200",
-        medium: "bg-warning-50 text-warning-600 dark:bg-warning-900/30 dark:text-warning-400 border-warning-200",
-        hard: "bg-danger-50 text-danger-600 dark:bg-danger-900/30 dark:text-danger-400 border-danger-200",
+        easy: "bg-success-50 text-yellow-600 dark:bg-success-900/30 dark:text-success-400 border-success-200",
+        medium: "bg-warning-50 text-green-600 dark:bg-warning-900/30 dark:text-warning-400 border-warning-200",
+        hard: "bg-danger-50 text-red-600 dark:bg-danger-900/30 dark:text-danger-400 border-danger-200",
     };
 
     return (
-        <div className="group bg-white dark:bg-slate-900 border border-default-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+        <div className="group bg-white dark:bg-white/10 border border-default-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
             
             <div className="relative h-70 w-full overflow-hidden bg-default-100">
                 <img 

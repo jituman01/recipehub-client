@@ -10,7 +10,7 @@ import { Button } from "@heroui/react";
 const sliderImages = [
   { id: 1, src: "/burger-bg.png", alt: "The Double Decker Burger" },
   { id: 2, src: "/bg-2.png", alt: "Special Recipe Dish" },
-  { id: 3, src: "/desert.png", alt: "Healthy sweets Bowl" },
+  { id: 3, src: "/bg-5.png", alt: "Healthy Salad Bowl" },
   { id: 4, src: "/chicken-fry.png", alt: "Mexican Fry" },
 ];
 
@@ -65,7 +65,7 @@ export default function Banner() {
   };
 
   return (
-    <section className="relative min-h-[85vh] flex items-center bg-transparent overflow-hidden w-full select-none">
+    <section className="relative min-h-[91vh] flex items-center bg-transparent overflow-hidden w-full select-none">
       
       <div className="absolute right-0 top-0 bottom-0 w-full md:w-[30%] lg:w-[35%] h-full bg-[#F9C723] hidden md:block z-0" />
       <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-[#F9C723] block md:hidden z-0" />
@@ -87,7 +87,7 @@ export default function Banner() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] uppercase"
           >
-            <span className="text-4xl sm:text-5xl">Taste the Best that</span>
+            <span className="text-3xl sm:text-4xl">Taste the Best that</span>
             <br />
             <span className="text-yellow-500 dark:text-yellow-500">Surprise you</span>
           </motion.h1>
