@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link href="/">
               <p className="font-extrabold text-2xl tracking-tight">
-                <span className="text-orange-500">Recipe</span>
+                <span className="text-yellow-500">Recipe</span>
                 <span className="text-slate-900 dark:text-white">Hub</span>
               </p>
             </Link>
@@ -43,16 +43,16 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-600 dark:text-zinc-400">
               <li>
-                <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
+                <Link href="/" className="hover:text-yellow-500 transition-colors">Home</Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-orange-500 transition-colors">Browse Recipes</Link>
+                <Link href="#" className="hover:text-yellow-500 transition-colors">Browse Recipes</Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-orange-500 transition-colors">About Us</Link>
+                <Link href="#" className="hover:text-yellow-500 transition-colors">About Us</Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-orange-500 transition-colors">Privacy Policy</Link>
+                <Link href="#" className="hover:text-yellow-500 transition-colors">Privacy Policy</Link>
               </li>
             </ul>
           </div>
@@ -64,15 +64,15 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm text-slate-600 dark:text-zinc-400">
               <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-orange-500 shrink-0" />
+                <Mail className="w-4 h-4 text-yellow-500 shrink-0" />
                 <span className="truncate">support@recipehub.com</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-orange-500 shrink-0" />
+                <Phone className="w-4 h-4 text-yellow-500 shrink-0" />
                 <span>+880 1234-567890</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
                 <span>Dhaka, Bangladesh</span>
               </li>
             </ul>
@@ -87,16 +87,16 @@ const Footer = () => {
               Stay updated with our weekly popular dishes and updates.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" aria-label="Facebook" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
+              <a href="#" aria-label="Facebook" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-yellow-500 hover:text-white dark:hover:bg-yellow-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
                 <LogoFacebook className="w-4 h-4" />
               </a>
-              <a href="#" aria-label="Twitter" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
+              <a href="#" aria-label="Twitter" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-yellow-500 hover:text-white dark:hover:bg-yellow-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
                 <BiLogoTwitter className="w-4 h-4" />
               </a>
-              <a href="#" aria-label="Instagram" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
+              <a href="#" aria-label="Instagram" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-yellow-500 hover:text-white dark:hover:bg-yellow-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
                 <BiLogoInstagram className="w-4 h-4" />
               </a>
-              <a href="#" aria-label="Github" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-orange-500 hover:text-white dark:hover:bg-orange-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
+              <a href="#" aria-label="Github" className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-yellow-500 hover:text-white dark:hover:bg-yellow-500 text-slate-600 dark:text-zinc-400 transition-all active:scale-95 border border-slate-200/40 dark:border-zinc-800/50">
                 <BiLogoGithub className="w-4 h-4" />
               </a>
             </div>
@@ -106,7 +106,7 @@ const Footer = () => {
 
         {/* 5. COPYRIGHT SECTION */}
         <div className="border-t border-slate-200/60 dark:border-zinc-800/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-zinc-500">
-          <p>© {currentYear} <span className="font-semibold text-orange-500">RecipeHub</span>. All rights reserved.</p>
+          <p>© {currentYear} <span className="font-semibold text-yellow-500">RecipeHub</span>. All rights reserved.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:underline">Terms of Service</a>
             <a href="#" className="hover:underline">Cookies Settings</a>

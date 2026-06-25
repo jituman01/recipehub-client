@@ -26,13 +26,13 @@ export default function RootLayout({ children }) {
 
           {/* backround glow */}
           <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden transition-colors duration-500">
-            <div className="absolute top-0 -left-40 w-[500px] h-[500px] bg-white dark:bg-blue-600/15 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
+            <div className="absolute top-0 -left-40 w-[500px] h-[500px] bg-white dark:bg-yellow-600/70 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
 
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white dark:bg-cyan-500/10 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
+            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white dark:bg-yellow-500/10 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
 
-            <div className="absolute top-1/3 -right-20 w-[700px] h-[700px] bg-white dark:bg-indigo-600/15 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
+            <div className="absolute top-1/3 -right-20 w-[700px] h-[700px] bg-white dark:bg-yellow-600/50 rounded-full blur-[150px] sm:blur-[300px] transition-all duration-500" />
 
-            <div className="absolute -bottom-30 right-20 w-[600px] h-[600px] bg-white dark:bg-blue-500/10 rounded-full blur-[150px] sm:blur-[220px] transition-all duration-500" />
+            <div className="absolute -bottom-30 right-20 w-[600px] h-[600px] bg-white dark:bg-yellow-500/10 rounded-full blur-[150px] sm:blur-[220px] transition-all duration-500" />
           </div>
 
           <Navbar />

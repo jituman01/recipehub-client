@@ -79,11 +79,11 @@ const Navbar = () => {
             <Link href={'/'}>
               <div className="">
                 
-                <p className="font-extrabold text-2xl "><span className="text-orange-500">Recipe</span>Hub</p>
+                <p className="font-extrabold text-2xl "><span className="text-yellow-500">Recipe</span>Hub</p>
               </div>
             </Link>
           </div>
-          <ul className="hidden items-center gap-6 md:flex text-orange-500">
+          <ul className="hidden items-center gap-6 md:flex text-yellow-500">
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -201,7 +201,7 @@ const Navbar = () => {
         </header>
         {isMenuOpen && (
           <div className="border-t border-separator md:hidden">
-            <ul className="flex flex-col gap-2 p-4 text-orange-500">
+            <ul className="flex flex-col gap-2 p-4 text-yellow-500">
               <li>
                 <Link href="/" className="block py-2">
                   Home
