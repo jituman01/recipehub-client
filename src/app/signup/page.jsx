@@ -76,7 +76,7 @@ export default function SignUpPage() {
                 <Input
                   placeholder="John Doe"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                 />
                 <FieldError className="text-xs text-rose-500 mt-1" />
               </TextField>
@@ -94,7 +94,7 @@ export default function SignUpPage() {
                 <Input
                   placeholder="Enter Your Name"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                 />
                 <FieldError className="text-xs text-rose-500 mt-1" />
               </TextField>
@@ -107,7 +107,7 @@ export default function SignUpPage() {
                 <Input
                   placeholder="Enter Your Image URL"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                 />
                 <FieldError className="text-xs text-rose-500 mt-1" />
               </TextField>
@@ -125,7 +125,7 @@ export default function SignUpPage() {
                 <Input
                   placeholder="Enter Your Password"
                   variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-orange-500"
+                  className="w-full bg-gray-150 dark:bg-zinc-800/50 border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
                   minLength={6}
                   pattern="^(?=.*[a-z])(?=.*[A-Z]).+$"
                   title="Password must be at least 6 characters long, contain at least one uppercase letter and one lowercase letter."
@@ -134,12 +134,12 @@ export default function SignUpPage() {
               </TextField>
             </Fieldset.Group>
 
-            {/* Submit Button with Orange Gradient Accent */}
+            {/* Submit Button with yellow Gradient Accent */}
             <div className="pt-4">
               <Button
                 type="submit"
                 isDisabled={loading}
-                className="w-full py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-xl shadow-md shadow-orange-500/10 hover:shadow-orange-500/20 active:scale-[0.98] transition-all text-center text-sm"
+                className="w-full py-3 bg-gradient-to-r from-yellow-500 to-amber-500 text-white font-bold rounded-xl shadow-md shadow-yellow-500/10 hover:shadow-yellow-500/20 active:scale-[0.98] transition-all text-center text-sm"
               >
                 {loading ? 'Creating Account...' : 'Sign Up'}
               </Button>
@@ -150,7 +150,7 @@ export default function SignUpPage() {
               Already have an account?{' '}
               <Link
                 href="/signin"
-                className="text-orange-500 hover:underline font-semibold"
+                className="text-yellow-500 hover:underline font-semibold"
               >
                 Login here
               </Link>

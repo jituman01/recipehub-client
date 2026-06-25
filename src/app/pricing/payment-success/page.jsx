@@ -27,17 +27,17 @@ export default async function Success({ searchParams }) {
   if (status === 'complete') {
     // console.log(metadata);
     await payment({
-    userEmail: customerEmail || metadata?.userEmail || "",
-    userId: metadata?.userId || "",
-    amount: metadata?.price || 4.99,
-    recipeId: metadata?.recipeId || "",
-    recipeName: metadata?.recipeName ,
-    image: metadata?.image,
-      authorName: metadata?.authorName || "Anonymous",
-    transactionId: session_id,
-    paymentStatus: "paid",
-    paidAt: new Date().toISOString()
-  });
+      userEmail: customerEmail || metadata?.userEmail || '',
+      userId: metadata?.userId || '',
+      amount: metadata?.price || 4.99,
+      recipeId: metadata?.recipeId || '',
+      recipeName: metadata?.recipeName,
+      image: metadata?.image,
+      authorName: metadata?.authorName || 'Anonymous',
+      transactionId: session_id,
+      paymentStatus: 'paid',
+      paidAt: new Date().toISOString(),
+    });
 
     return (
       <section id="success">
@@ -52,7 +52,7 @@ export default async function Success({ searchParams }) {
             <h1 className="text-3xl font-extrabold tracking-tight text-foreground">
               Payment Successful!
             </h1>
-            <p className="mt-2 text-sm text-orange-500 font-semibold tracking-wide uppercase">
+            <p className="mt-2 text-sm text-yellow-500 font-semibold tracking-wide uppercase">
               Welcome to Pro Chef Tier
             </p>
 
@@ -67,7 +67,7 @@ export default async function Success({ searchParams }) {
               . If you have any questions, please email{' '}
               <a
                 href="mailto:orders@example.com"
-                className="text-orange-500 font-medium hover:underline transition-all"
+                className="text-yellow-500 font-medium hover:underline transition-all"
               >
                 support@recipehub.com
               </a>
@@ -77,7 +77,7 @@ export default async function Success({ searchParams }) {
             {/* Action Buttons */}
             <div className="mt-8 space-y-3">
               <Link href="/">
-                <Button className="w-full h-11 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg shadow-orange-500/20 transition-all active:scale-98">
+                <Button className="w-full h-11 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-xl shadow-lg shadow-yellow-500/20 transition-all active:scale-98">
                   <span className="flex items-center gap-1.5 text-sm">
                     Go to Home <ArrowRight size={16} />
                   </span>

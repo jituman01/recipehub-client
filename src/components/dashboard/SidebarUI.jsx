@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Bars } from "@gravity-ui/icons";
-import { Button, Drawer } from "@heroui/react";
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { Bars } from '@gravity-ui/icons';
+import { Button, Drawer } from '@heroui/react';
 
 import {
   Home,
@@ -16,40 +16,66 @@ import {
   Users2,
   FileText,
   LogOut,
-} from "lucide-react";
-import { authClient } from "@/lib/auth-client";
-import toast from "react-hot-toast";
+} from 'lucide-react';
+import { authClient } from '@/lib/auth-client';
+import toast from 'react-hot-toast';
 
 export default function SidebarUI({ role }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const router=useRouter()
+  const router = useRouter();
 
   const dashboardItems = {
     user: [
-      { icon: Home, label: "Overview", link: "/dashboard/user" },
-      { icon: BookAIcon, label: "My Recipes", link: "/dashboard/user/my-recipes" },
-      { icon: Plus, label: "Add Recipe", link: "/dashboard/user/add-recipe" },
-      { icon: Heart, label: "My Favorites", link: "/dashboard/user/my-favourites" },
-      { icon: ShoppingCart, label: "My Purchased Recipes", link: "/dashboard/user/purchased-recipes" },
-      { icon: User, label: "Profile", link: "/dashboard/user/profile" },
+      { icon: Home, label: 'Overview', link: '/dashboard/user' },
+      {
+        icon: BookAIcon,
+        label: 'My Recipes',
+        link: '/dashboard/user/my-recipes',
+      },
+      { icon: Plus, label: 'Add Recipe', link: '/dashboard/user/add-recipe' },
+      {
+        icon: Heart,
+        label: 'My Favorites',
+        link: '/dashboard/user/my-favourites',
+      },
+      {
+        icon: ShoppingCart,
+        label: 'My Purchased Recipes',
+        link: '/dashboard/user/purchased-recipes',
+      },
+      { icon: User, label: 'Profile', link: '/dashboard/user/profile' },
     ],
     admin: [
-      { icon: Home, label: "Overview", link: "/dashboard/admin" },
-      { icon: Users2, label: "Manage Users", link: "/dashboard/admin/manage-users" },
-      { icon: BookAIcon, label: "Manage Recipes", link: "/dashboard/admin/manage-recipes" },
-      { icon: User, label: "Recipe Reports", link: "/dashboard/admin/recipe-reports" },
-      { icon: FileText, label: "Transactions", link: "/dashboard/admin/transactions" },
+      { icon: Home, label: 'Overview', link: '/dashboard/admin' },
+      {
+        icon: Users2,
+        label: 'Manage Users',
+        link: '/dashboard/admin/manage-users',
+      },
+      {
+        icon: BookAIcon,
+        label: 'Manage Recipes',
+        link: '/dashboard/admin/manage-recipes',
+      },
+      {
+        icon: User,
+        label: 'Recipe Reports',
+        link: '/dashboard/admin/recipe-reports',
+      },
+      {
+        icon: FileText,
+        label: 'Transactions',
+        link: '/dashboard/admin/transactions',
+      },
     ],
   };
 
   const navItems = dashboardItems[role] || dashboardItems.user;
 
-  
-
   const NavLinks = () => (
     <nav className="flex flex-col gap-1.5 w-full">
-      {navItems.map((item) => {
+      {navItems.map(item => {
         const isActive = pathname === item.link;
         return (
           <Link
@@ -62,14 +88,14 @@ export default function SidebarUI({ role }) {
               type="button"
               className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-semibold transition-all duration-200 ${
                 isActive
-                  ? "bg-orange-500/10 text-orange-500 border-l-3 border-orange-500 rounded-l-none pl-3"
-                  : "text-default-700 hover:bg-default-100 hover:text-orange-500"
+                  ? 'bg-yellow-500/10 text-yellow-500 border-l-3 border-yellow-500 rounded-l-none pl-3'
+                  : 'text-default-700 hover:bg-default-100 hover:text-yellow-500'
               }`}
             >
               <item.icon
                 size={20}
                 className={`flex-shrink-0 transition-colors ${
-                  isActive ? "text-orange-500" : "text-default-500"
+                  isActive ? 'text-yellow-500' : 'text-default-500'
                 }`}
               />
               <span className="truncate">{item.label}</span>
@@ -80,13 +106,12 @@ export default function SidebarUI({ role }) {
     </nav>
   );
 
-    const handleSignOut = async () => {
-
+  const handleSignOut = async () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          toast.success("Logged out successfully!");
-          router.push("/signin"); 
+          toast.success('Logged out successfully!');
+          router.push('/signin');
           router.refresh();
         },
       },
@@ -99,7 +124,7 @@ export default function SidebarUI({ role }) {
         <div className="h-full px-4 flex items-center justify-between">
           <div>
             <p className="font-extrabold text-lg">
-              <span className="text-orange-500">Recipe</span>Hub
+              <span className="text-yellow-500">Recipe</span>Hub
             </p>
             <p className="text-[10px] text-default-400 uppercase">
               {role} Dashboard
@@ -113,34 +138,39 @@ export default function SidebarUI({ role }) {
 
       <aside className="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-72 flex-col border-r border-divider bg-background p-6 z-40 shrink-0">
         <div className="border-b border-divider pb-5 mb-5">
-          
           <p className="text-xs text-default-400 font-bold mt-1 uppercase tracking-wider">
             {role} Dashboard
           </p>
         </div>
         <NavLinks />
         <div className="border-t border-divider pt-4 mt-4">
-        <button
-        variant="outline"
-      type="button"
-      onClick={handleSignOut}
-      className="flex w-full items-center gap-3 rounded-xl px-4  text-left text-sm font-semibold text-red-500 dark:text-red-500 cursor-pointer hover:text-red-600 transition-all duration-200 mt-auto"
-    >
-      <LogOut size={20} className="flex-shrink-0 hover:text-red-600  text-red-500" />
-      <span className="truncate">Logout</span>
-        </button>
+          <button
+            variant="outline"
+            type="button"
+            onClick={handleSignOut}
+            className="flex w-full items-center gap-3 rounded-xl px-4  text-left text-sm font-semibold text-red-500 dark:text-red-500 cursor-pointer hover:text-red-600 transition-all duration-200 mt-auto"
+          >
+            <LogOut
+              size={20}
+              className="flex-shrink-0 hover:text-red-600  text-red-500"
+            />
+            <span className="truncate">Logout</span>
+          </button>
         </div>
       </aside>
 
       <Drawer isOpen={open} onOpenChange={setOpen}>
         <Drawer.Backdrop>
-          <Drawer.Content placement="left" className="max-w-[280px] bg-background">
+          <Drawer.Content
+            placement="left"
+            className="max-w-[280px] bg-background"
+          >
             <Drawer.Dialog className="h-full flex flex-col p-6">
               <Drawer.CloseTrigger className="absolute right-4 top-4" />
               <Drawer.Header className="border-b border-divider pb-4 mb-4">
                 <Drawer.Heading className="text-left">
                   <p className="font-extrabold text-xl">
-                    <span className="text-orange-500">Recipe</span>Hub
+                    <span className="text-yellow-500">Recipe</span>Hub
                   </p>
                   <p className="text-[10px] text-default-400 uppercase mt-0.5">
                     {role} Dashboard

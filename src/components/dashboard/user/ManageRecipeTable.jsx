@@ -79,7 +79,7 @@ const ManageRecipeTable = ({ recipes = [], onEdit, onDelete }) => {
 
                   {/* Category Pill */}
                   <td className="py-4 px-6">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-50 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 border border-orange-100 dark:border-orange-900/30">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-50 dark:bg-yellow-950/40 text-yellow-600 dark:text-yellow-400 border border-yellow-100 dark:border-yellow-900/30">
                       {recipe.category || 'Breakfast'}
                     </span>
                   </td>
@@ -123,7 +123,7 @@ const ManageRecipeTable = ({ recipes = [], onEdit, onDelete }) => {
                       </Link>
                       <button
                         onClick={() => onEdit(recipe._id)}
-                        className="px-3 py-1.5 text-xs font-bold rounded-lg bg-orange-50 hover:bg-orange-100 dark:bg-orange-950/30 dark:hover:bg-orange-950/60 text-orange-500 border border-orange-200/40 transition-all"
+                        className="px-3 py-1.5 text-xs font-bold rounded-lg bg-yellow-50 hover:bg-yellow-100 dark:bg-yellow-950/30 dark:hover:bg-yellow-950/60 text-yellow-500 border border-yellow-200/40 transition-all"
                       >
                         Edit
                       </button>

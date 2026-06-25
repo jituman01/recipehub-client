@@ -5,7 +5,10 @@ import { Button, Card } from '@heroui/react';
 import { authClient } from '@/lib/auth-client';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
-import { fetchFavoriteRecipesAction, removeFavoriteRecipeAction } from '@/lib/action/favorite';
+import {
+  fetchFavoriteRecipesAction,
+  removeFavoriteRecipeAction,
+} from '@/lib/action/favorite';
 
 const MyFavoritesPage = () => {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
@@ -29,17 +32,18 @@ const MyFavoritesPage = () => {
     }
   }, [currentUserId]);
 
-  const handleRemoveFavorite = async (recipeId) => {
+  const handleRemoveFavorite = async recipeId => {
     if (!currentUserId || !recipeId) return;
-
 
     setRemovingId(recipeId);
 
     const result = await removeFavoriteRecipeAction(currentUserId, recipeId);
 
     if (result.success) {
-      setFavoriteRecipes((prev) => prev.filter((recipe) => recipe._id !== recipeId));
-    } 
+      setFavoriteRecipes(prev =>
+        prev.filter(recipe => recipe._id !== recipeId)
+      );
+    }
     setRemovingId(null);
   };
 
@@ -64,16 +68,16 @@ const MyFavoritesPage = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {favoriteRecipes.map((recipe) => (
-            <Card 
-              key={recipe._id} 
+          {favoriteRecipes.map(recipe => (
+            <Card
+              key={recipe._id}
               className="border border-default-200/60 bg-background/60 backdrop-blur-md shadow-sm overflow-hidden flex flex-col justify-between"
               radius="lg"
             >
               {/* img */}
               <div className="w-full h-48 overflow-hidden border-b border-divider bg-default-100">
                 <img
-                  src={recipe.image || recipe.recipeImage || "/placeholder.jpg"}
+                  src={recipe.image || recipe.recipeImage || '/placeholder.jpg'}
                   alt={recipe.recipeName}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
@@ -81,13 +85,17 @@ const MyFavoritesPage = () => {
 
               <div className="p-4 flex-1 flex flex-col justify-between space-y-4">
                 <div>
-                  <h3 className="font-bold text-base text-orange-500 line-clamp-1">
+                  <h3 className="font-bold text-base text-yellow-500 line-clamp-1">
                     {recipe.recipeName}
                   </h3>
-                  
+
                   <div className="flex items-center gap-1 mt-1.5 font-bold text-sm">
                     <p>Total Like:</p>
-                    <Heart className='text-red-500' size={14} fill="currentColor" />
+                    <Heart
+                      className="text-red-500"
+                      size={14}
+                      fill="currentColor"
+                    />
                     <span>{recipe.likesCount || 0}</span>
                   </div>
                 </div>
@@ -101,7 +109,7 @@ const MyFavoritesPage = () => {
                       View Details
                     </Button>
                   </Link>
-                  
+
                   <Button
                     size="md"
                     variant="flat"
