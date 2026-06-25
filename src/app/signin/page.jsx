@@ -11,13 +11,15 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
 export default function SignInPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -39,7 +41,7 @@ export default function SignInPage() {
       onSuccess: () => {
         toast.success('Successfully logged in!');
         setLoading(false);
-        router.push('/');
+        router.push(callbackUrl);
         router.refresh();
       },
       onError: (ctx) => {

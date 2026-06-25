@@ -20,7 +20,7 @@ const RecipesPage = async ({ searchParams }) => {
 
       <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-4 w-full'>
         <div>
-        { search && <h2 className='text-gray-600 dark:text-gray-400'>Found {recipes.length} Recipes with the search item <b className='text-orange-500'>{search}</b></h2>}
+        { search && <h2 className='text-gray-600 dark:text-gray-400'>Found {recipes.length} Recipes with the search item <b className='text-yellow-500'>{search}</b></h2>}
         </div>
         
         <div>

@@ -44,18 +44,18 @@ const RecipeCard = ({ recipe }) => {
             <div className="p-5 flex flex-col flex-grow justify-between space-y-4">
                 <div className="space-y-3">
                     <div>
-                        <h3 className="text-lg font-black text-foreground group-hover:text-orange-500 transition-colors line-clamp-1 mb-2">
+                        <h3 className="text-lg font-black text-foreground group-hover:text-yellow-500 transition-colors line-clamp-1 mb-2">
                             {title}
                         </h3>
                         <div className="flex items-center gap-1  text-xs">
-                            <Globe size={12} className="text-orange-500"/>
+                            <Globe size={12} className="text-yellow-500"/>
                             <span>{cuisine}</span>
                         </div>
                     </div>
 
                     {/* time */}
                     <div className="flex items-center gap-2 text-sm text-default-600 dark:text-default-300 bg-default-50 dark:bg-default-800/50 rounded-xl w-fit">
-                        <Clock size={14} className="text-orange-500" />
+                        <Clock size={14} className="text-yellow-500" />
                         <span className="font-medium text-xs">Time: {prepTime}</span>
                     </div>
 
@@ -79,7 +79,7 @@ const RecipeCard = ({ recipe }) => {
                         <Button
                          as={Link}   
                         size="md" 
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-md shadow-orange-500/10 flex items-center gap-2"
+                        className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-xl shadow-md shadow-yellow-500/10 flex items-center gap-2"
                         >
                             <ChefHat size={16} />
                             View Details

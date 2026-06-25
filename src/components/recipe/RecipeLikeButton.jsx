@@ -4,13 +4,20 @@ import React, { useState } from 'react';
 import { Heart } from "lucide-react";
 import toast from 'react-hot-toast';
 import { toggleLikeAction } from '@/lib/action/like';
+import { useRouter } from 'next/navigation';
 
-export default function RecipeLikeButton({ recipeId, initialLikes }) {
+export default function RecipeLikeButton({ recipeId, initialLikes, isLoggedIn, signinRedirectUrl }) {
   const [likes, setLikes] = useState(initialLikes || 0);
   const [isLiked, setIsLiked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
-  const handleLike = async () => {
+  const handleLike = async (e) => {
+    if (!isLoggedIn) {
+      router.push(signinRedirectUrl);
+      return;
+    }
+
     if (isSubmitting) return;
     setIsSubmitting(true);
 
@@ -19,7 +26,7 @@ export default function RecipeLikeButton({ recipeId, initialLikes }) {
     if (result.success) {
       setLikes(result.likesCount);
       setIsLiked(true);
-      toast.success("Liked!");
+      toast.success("Liked Successfully!");
     }
 
     setIsSubmitting(false);

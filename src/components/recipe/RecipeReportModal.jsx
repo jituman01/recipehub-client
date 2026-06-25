@@ -88,8 +88,8 @@ export default function RecipeReportModal({
                   key={item.id}
                   className={`flex items-center gap-3 border rounded-xl p-4 cursor-pointer transition-all duration-200 ${
                     selectedReason === item.id
-                      ? 'border-orange-500 bg-orange-50/60 dark:bg-orange-950/30 shadow-inner'
-                      : 'border-slate-200 dark:border-slate-800 hover:border-orange-500 dark:border-orange-500'
+                      ? 'border-yellow-500 bg-yellow-50/60 dark:bg-yellow-950/30 shadow-inner'
+                      : 'border-slate-200 dark:border-slate-800 hover:border-yellow-500 dark:border-yellow-500'
                   }`}
                 >
                   <input
@@ -98,21 +98,21 @@ export default function RecipeReportModal({
                     value={item.id}
                     checked={selectedReason === item.id}
                     onChange={e => setSelectedReason(e.target.value)}
-                    className="form-radio h-4 w-4 text-orange-500 focus:ring-orange-500 border-slate-300 dark:border-slate-700 dark:bg-slate-800 cursor-pointer"
+                    className="form-radio h-4 w-4 text-yellow-500 focus:ring-yellow-500 border-slate-300 dark:border-slate-700 dark:bg-slate-800 cursor-pointer"
                     required
                   />
                   <item.icon
                     size={18}
                     className={`${
                       selectedReason === item.id
-                        ? 'text-orange-500'
+                        ? 'text-yellow-500'
                         : 'text-white dark:text-slate-500'
                     }`}
                   />
                   <span
                     className={`text-sm font-semibold ${
                       selectedReason === item.id
-                        ? 'text-orange-600 dark:text-orange-400'
+                        ? 'text-yellow-600 dark:text-yellow-400'
                         : 'text-white dark:text-slate-300'
                     }`}
                   >
@@ -132,7 +132,7 @@ export default function RecipeReportModal({
               value={details}
               onChange={e => setDetails(e.target.value)}
               placeholder="Provide more context..."
-              className="w-full h-24 p-4 border border-slate-200 dark:border-slate-800 rounded-xl bg-transparent text-slate-400 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all resize-none"
+              className="w-full h-24 p-4 border border-slate-200 dark:border-slate-800 rounded-xl bg-transparent text-slate-400 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20 transition-all resize-none"
             />
           </div>
 

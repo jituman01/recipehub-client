@@ -5,14 +5,18 @@ import { Flag } from "lucide-react";
 import { authClient } from '@/lib/auth-client';
 import toast from 'react-hot-toast';
 import RecipeReportModal from './RecipeReportModal';
+import { useRouter } from 'next/navigation';
 
-export default function RecipeReportButton({ recipeId, recipeName }) {
+export default function RecipeReportButton({ recipeId, recipeName, isLoggedIn, signinRedirectUrl }) {
   const { data: session } = authClient.useSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   const handleOpenModal = () => {
-    if (!session?.user) {
-      return toast.error("Please login first to report!");
+    if (!isLoggedIn || !session?.user) {
+      toast.error("Please sign in first to report!");
+      router.push(signinRedirectUrl);
+      return;
     }
     setIsModalOpen(true);
   };
@@ -29,13 +33,15 @@ export default function RecipeReportButton({ recipeId, recipeName }) {
         </button>
       </div>
 
-      <RecipeReportModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        recipeId={recipeId}
-        recipeName={recipeName}
-        userEmail={session?.user?.email}
-      />
+      {isLoggedIn && session?.user && (
+        <RecipeReportModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          recipeId={recipeId}
+          recipeName={recipeName}
+          userEmail={session.user.email}
+        />
+      )}
     </>
   );
 }

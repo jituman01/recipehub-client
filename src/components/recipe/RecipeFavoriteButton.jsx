@@ -6,32 +6,45 @@ import { Star } from "lucide-react";
 import toast from 'react-hot-toast';
 import { authClient } from '@/lib/auth-client';
 import { addToFavoriteAction } from '@/lib/action/favorite';
+import { useRouter } from 'next/navigation';
 
-export default function RecipeFavoriteButton({ recipeId }) {
+export default function RecipeFavoriteButton({ recipeId, isLoggedIn, signinRedirectUrl }) {
   const { data: session } = authClient.useSession();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
+  const router = useRouter();
 
   const handleAddToFavorite = async () => {
+    if (!isLoggedIn || !session?.user) {
+      toast.error("Please sign in first!");
+      router.push(signinRedirectUrl);
+      return;
+    }
+
+    if (isSubmitting) return;
     setIsSubmitting(true);
     
-    const result = await addToFavoriteAction(
-      session.user.id,
-      session.user.email,
-      recipeId
-    );
+    try {
+      const result = await addToFavoriteAction(
+        session.user.id,
+        session.user.email,
+        recipeId
+      );
 
-    if (result.success) {
-      toast.success(result.msg || "Added to favorites!");
-      setIsFavorited(true); 
-    } else {
-      toast.error(result.msg || "Already added to favorites!");
-      if (result.msg?.toLowerCase().includes("already")) {
-        setIsFavorited(true);
+      if (result.success) {
+        toast.success(result.msg || "Added to favorites!");
+        setIsFavorited(true); 
+      } else {
+        toast.error(result.msg || "Already added to favorites!");
+        if (result.msg?.toLowerCase().includes("already")) {
+          setIsFavorited(true);
+        }
       }
+    } catch (error) {
+      toast.error("Something went wrong!");
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    setIsSubmitting(false);
   };
 
   return (
@@ -44,10 +57,10 @@ export default function RecipeFavoriteButton({ recipeId }) {
     >
       <Star 
         size={16} 
-        className={isFavorited ? "text-orange-500" : "text-slate-800 dark:text-slate-200"} 
+        className={isFavorited ? "text-yellow-500" : "text-slate-800 dark:text-slate-200"} 
         fill={isFavorited ? "currentColor" : "none"}
       />
-      <span>{isSubmitting ? "" : "Save to Favorites"}</span>
+      <span>{isSubmitting ? "Saving..." : "Save to Favorites"}</span>
     </Button>
   );
 }
