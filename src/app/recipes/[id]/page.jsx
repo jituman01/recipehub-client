@@ -31,7 +31,7 @@ const RecipeDetailsPage = async ({ params }) => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl space-y-6 pb-12">
       {/* banner*/}
-      <div className="relative h-[300px] sm:h-[600px] w-full rounded-3xl overflow-hidden shadow-md">
+      <div className="relative h-[300px] sm:h-[600px] w-full rounded-3xl overflow-hidden shadow-md border border-yellow-500">
         <img
           src={recipe.image || 'https://placehold.co/600x400'}
           alt={recipe.recipeName}
@@ -57,7 +57,7 @@ const RecipeDetailsPage = async ({ params }) => {
 
       {/* Necessary Information: Time, Cuisine, Difficulty */}
       <div className="grid grid-cols-3 gap-4 text-center">
-        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400/40">
+        <div className="bg-default-50 dark:bg-transparent p-4 rounded-2xl border border-gray-400/40">
           <Clock size={20} className="text-yellow-500 mx-auto mb-1" />
           <p className="text-[10px] text-default-400 font-semibold uppercase">
             Prep Time
@@ -65,7 +65,7 @@ const RecipeDetailsPage = async ({ params }) => {
           <p className="text-sm font-bold">{recipe.prepTime} mins</p>
         </div>
 
-        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400/40">
+        <div className="bg-default-50 dark:bg-transparent p-4 rounded-2xl border border-gray-400/40">
           <Utensils size={20} className="text-yellow-500 mx-auto mb-1" />
           <p className="text-[10px] text-default-400 font-semibold uppercase">
             Cuisine
@@ -75,7 +75,7 @@ const RecipeDetailsPage = async ({ params }) => {
           </p>
         </div>
 
-        <div className="bg-default-50 dark:bg-slate-800 p-4 rounded-2xl border border-gray-400/40">
+        <div className="bg-default-50 dark:bg-transparent p-4 rounded-2xl border border-gray-400/40">
           <Award size={20} className="text-yellow-500 mx-auto mb-1" />
           <p className="text-[10px] text-default-400 font-semibold uppercase">
             Difficulty
@@ -87,7 +87,7 @@ const RecipeDetailsPage = async ({ params }) => {
       </div>
 
       {/* 🎯 Actions Section */}
-      <div className="w-full bg-white dark:bg-slate-900 border border-default-200 dark:border-white/10 p-6 rounded-3xl shadow-sm space-y-4">
+      <div className="w-full bg-white dark:bg-white/10 border border-default-200 dark:border-white/10 p-6 rounded-3xl shadow-sm space-y-4">
         <span className="text-[11px] font-bold text-gray-400 dark:text-gray-500 tracking-wider uppercase block">
           Actions
         </span>
@@ -127,7 +127,7 @@ const RecipeDetailsPage = async ({ params }) => {
             <input type="hidden" value={recipe.authorName} name="authorName" />
             <button
               type="submit"
-              className="w-full bg-yellow-500 dark:bg-yellow-800 hover:bg-yellow dark:hover:bg-yellow-700 text-white font-medium rounded-xl py-3 text-sm transition-colors shadow-sm cursor-pointer text-center block"
+              className="w-full bg-yellow-600  hover:bg-yellow dark:hover:bg-yellow-700 text-white font-medium rounded-xl py-3 text-sm transition-colors shadow-sm cursor-pointer text-center block"
             >
               Purchase Recipe
             </button>
@@ -145,7 +145,7 @@ const RecipeDetailsPage = async ({ params }) => {
       {/* Ingredients & Instructions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Ingredients Card */}
-        <div className="md:col-span-1 bg-white dark:bg-slate-900 border border-default-200 p-6 rounded-2xl space-y-4">
+        <div className="md:col-span-1 bg-white dark:bg-white/10 border border-default-200 p-6 rounded-2xl space-y-4">
           <h3 className="text-lg font-bold border-b pb-2 flex items-center gap-2">
             <CheckCircle size={18} className="text-yellow-500" /> Ingredients
           </h3>
@@ -166,7 +166,7 @@ const RecipeDetailsPage = async ({ params }) => {
         </div>
 
         {/* Instructions Card */}
-        <div className="md:col-span-2 bg-white dark:bg-slate-900 border border-default-200 p-6 rounded-2xl space-y-4">
+        <div className="md:col-span-2 bg-white dark:bg-white/10 border border-default-200 p-6 rounded-2xl space-y-4">
           <h3 className="text-lg font-bold border-b pb-2">
             Cooking Instructions
           </h3>

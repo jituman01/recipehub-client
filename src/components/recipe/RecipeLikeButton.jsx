@@ -37,7 +37,7 @@ export default function RecipeLikeButton({ recipeId, initialLikes, isLoggedIn, s
       type="button"
       onClick={handleLike}
       disabled={isSubmitting}
-      className="w-full flex items-center justify-center gap-2 border border-gray-200 dark:border-white/10 rounded-xl py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+      className="w-full flex items-center justify-center gap-2 border border-gray-200 dark:border-white/10 rounded-xl py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-black transition-colors cursor-pointer"
     >
       <Heart 
         size={16} 

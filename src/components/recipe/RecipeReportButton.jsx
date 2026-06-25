@@ -27,7 +27,7 @@ export default function RecipeReportButton({ recipeId, recipeName, isLoggedIn, s
         <button 
           onClick={handleOpenModal}
           type="button"
-          className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 font-medium transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+          className="text-xs text-gray-400 hover:text-red-600 font-medium transition-colors inline-flex items-center gap-1.5 cursor-pointer"
         >
           <Flag size={13} /> Report Issue
         </button>
