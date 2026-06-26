@@ -23,8 +23,11 @@ export const addRecipe = async (recipe) => {
 };
 
 
-export const getAllRecipes = async (search = '', category = '') => {
-  let url = `${baseUrl}/recipes?`;
+export const getAllRecipes = async (search = '', category = '', page) => {
+  if(!page){
+    page = 1;
+  }
+  let url = `${baseUrl}/recipes?page=${page}`;
   if (search) url += `search=${search}&`;
   if (category) url += `category=${category}`;
   

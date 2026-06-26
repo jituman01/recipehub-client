@@ -2,13 +2,19 @@ import { getAllRecipes } from '@/lib/api/recipe';
 import RecipeCard from '@/components/recipe/RecipeCard';
 import SearchRecipe from '@/components/SearchRecipe';
 import CategoryFilter from '@/components/recipe/CategoryFilter';
+import PaginationControls from '@/components/recipe/PaginationControls';
 
 const RecipesPage = async ({ searchParams }) => {
   const params = await searchParams;
   const search = params?.search || '';
   const category = params?.category || '';
+  const currentPage = Number(params?.page) || 1;
+  // console.log(currentPage);
 
-  const recipes = await getAllRecipes(search, category) || [];
+
+  const { data: recipes = [], totalPage } = await getAllRecipes(search, category, currentPage) || {};
+  // console.log(recipes);
+  
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 space-y-8">
@@ -24,6 +30,14 @@ const RecipesPage = async ({ searchParams }) => {
           <RecipeCard key={recipe._id} recipe={recipe} />
         ))}
       </div>
+      {/* Pagination */}
+      {totalPage > 1 && (
+        <div className="flex justify-center mt-10">
+          <PaginationControls totalPages={totalPage} currentPage={currentPage} />
+        </div>
+      )}
+
+
     </div>
   );
 };
