@@ -23,10 +23,13 @@ export const addRecipe = async (recipe) => {
 };
 
 
-export const getAllRecipes = async (search) => {
-  const res = await fetch(`${baseUrl}/recipes?search=${search}`)
-  const data = await res.json();
-  return data;
+export const getAllRecipes = async (search = '', category = '') => {
+  let url = `${baseUrl}/recipes?`;
+  if (search) url += `search=${search}&`;
+  if (category) url += `category=${category}`;
+  
+  const res = await fetch(url, { cache: 'no-store' });
+  return res.json();
 };
 
 
