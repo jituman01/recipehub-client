@@ -41,6 +41,10 @@ const Navbar = () => {
         },
       });
     };
+
+    const pathname = usePathname();
+    const isActive = (path) => pathname === path;
+
   return (
     
       <nav className="sticky top-0 z-50 w-full border-b border-separator bg-transparent backdrop-blur-lg">
@@ -85,12 +89,16 @@ const Navbar = () => {
           </div>
           <ul className="hidden items-center gap-6 md:flex text-yellow-500">
             <li>
-              <Link href="/">Home</Link>
+            <Link
+              className={isActive('/') ? "text-white bg-yellow-500   rounded-full px-3 py-2  font-semibold" : "font-semibold text-yellow-500"}
+              href="/">Home</Link>
             </li>
             <li>
               <Link
+
+              className={isActive('/recipes') ? "text-white bg-yellow-500   rounded-full px-3 py-2  font-semibold" : "font-semibold text-yellow-500"}
                 href="/recipes"
-                className="font-medium "
+                
                 aria-current="page"
               >
                 Browse Recipe
@@ -99,8 +107,10 @@ const Navbar = () => {
           {user && (
             <li>
               <Link
+
+                className={isActive(`/dashboard/${user?.role}`) ? "text-white bg-yellow-500   rounded-full px-3 py-2  font-semibold" : "text-yellow-500"}
                 href={`/dashboard/${user?.role}`}
-                className="font-medium "
+                
                 aria-current="page"
               >
                 Dashboard
