@@ -90,13 +90,13 @@ const Navbar = () => {
           <ul className="hidden items-center gap-6 md:flex text-yellow-500">
             <li>
             <Link
-              className={isActive('/') ? "text-white bg-yellow-500   rounded-full px-3 py-2  font-semibold" : "font-semibold text-yellow-500"}
+              className={isActive('/') ? "border-b-3 border-yellow-500 font-semibold pb-1 transition-all duration-300" : " text-yellow-500"}
               href="/">Home</Link>
             </li>
             <li>
               <Link
 
-              className={isActive('/recipes') ? "text-white bg-yellow-500   rounded-full px-3 py-2  font-semibold" : "font-semibold text-yellow-500"}
+              className={isActive('/recipes') ? "border-b-3 border-yellow-500 font-semibold pb-1 transition-all duration-300" : "font-semibold text-yellow-500"}
                 href="/recipes"
                 
                 aria-current="page"
@@ -108,7 +108,7 @@ const Navbar = () => {
             <li>
               <Link
 
-                className={isActive(`/dashboard/${user?.role}`) ? "text-white bg-yellow-500   rounded-full px-3 py-2  font-semibold" : "text-yellow-500"}
+                className={isActive(`/dashboard/${user?.role}`) ? "border-b-3 border-yellow-500 font-semibold pb-1 transition-all duration-300" : "font-semibold text-yellow-500"}
                 href={`/dashboard/${user?.role}`}
                 
                 aria-current="page"
