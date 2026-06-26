@@ -23,9 +23,12 @@ export default function PopularRecipe() {
 
 
   return (
-    <div className="w-full space-y-16 py-12 max-w-7xl mx-auto ">
+    <section className=''>
+      <div className=''>
+        <div className="w-full space-y-16 py-6 rounded-4xl px-10 dark:bg-black/20 bg-white max-w-7xl mx-auto mt-20 mb-20">
+          
       {/* Section Header */}
-      <div className="space-y-1 text-center">
+      <div className="space-y-1 text-center ">
         <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl items-center gap-2">
           <span className="text-yellow-500">🔥 Popular</span> Recipes
         </h2>
@@ -34,7 +37,7 @@ export default function PopularRecipe() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-16 mt-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-16 mt-25">
         {recipes.map((recipe, index) => (
           <PopularRecipeCard 
             key={recipe._id || recipe.id} 
@@ -44,5 +47,7 @@ export default function PopularRecipe() {
         ))}
       </div>
     </div>
+      </div>
+    </section>
   );
 }

@@ -65,7 +65,7 @@ export default function Banner() {
   };
 
   return (
-    <section className="relative min-h-[91vh] flex items-center bg-transparent overflow-hidden w-full select-none">
+    <section className="relative min-h-[91vh] flex items-center dark:bg-transparent overflow-hidden w-full select-none">
       
       <div className="absolute right-0 top-0 bottom-0 w-full md:w-[30%] lg:w-[35%] h-full bg-[#F9C723] hidden md:block z-0" />
       <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-[#F9C723] block md:hidden z-0" />
@@ -163,15 +163,14 @@ export default function Banner() {
             </div>
 
             {/* Nutrition & Allergens Link */}
-            <div className="text-right whitespace-nowrap pt-4 lg:pt-0">
-              <Link href="/nutrition" className="text-[10px] font-black text-slate-900 hover:underline uppercase tracking-wider flex items-center justify-end gap-1 group">
-                Nutrition <span className="text-xs group-hover:translate-x-1 transition-transform">›</span>
-              </Link>
+            <div className="-mb-20">
+              {/* <h1 className="font-extrabold text-7xl text-yellow-300">RECIPEHUB</h1> */}
+              <p className="font-extrabold text-6xl text-yellow-300">RECIPE SHARING PLATFORM</p>
             </div>
           </div>
 
           {/* Decoration Image */}
-          <div className="absolute right-[-450px] top-[2%] w-[550px] h-[550px] hidden xl:block opacity-[0.6] pointer-events-none z-0">
+          <div className="absolute right-[-430px] top-[10%] w-[550px] h-[550px] hidden xl:block opacity-[0.6] pointer-events-none z-0">
             <Image
               src="/bg-5.png" 
               alt="Background Burger Decoration"

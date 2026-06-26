@@ -25,9 +25,10 @@ export default function FeaturedSection() {
   if (recipes.length === 0) return null;
 
   return (
-    <div className="mt-10 w-full max-w-7xl mx-auto space-y-6 py-6">
+    <section className='bg-[#fef1e1] dark:bg-transparent'>
+      <div className=" mt-20 w-full max-w-7xl mx-auto space-y-6 py-6">
       {/* Section Header */}
-      <div className="space-y-1 text-center mx-auto">
+      <div className="space-y-1 text-center mx-auto mb-15">
         <h2 className="text-center text-2xl font-black tracking-tight sm:text-3xl items-center gap-2">
           <span className="text-yellow-500 text-center">✨ Featured</span> Recipes
         </h2>
@@ -43,5 +44,6 @@ export default function FeaturedSection() {
         ))}
       </div>
     </div>
+    </section>
   );
 }
