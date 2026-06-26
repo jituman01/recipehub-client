@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Bars } from '@gravity-ui/icons';
-import { Button, Drawer } from '@heroui/react';
+import { Avatar, Button, Drawer } from '@heroui/react';
 
 import {
   Home,
@@ -24,6 +24,8 @@ export default function SidebarUI({ role }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   const dashboardItems = {
     user: [
@@ -137,6 +139,23 @@ export default function SidebarUI({ role }) {
       </header>
 
       <aside className="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-72 flex-col border-r border-divider bg-background p-6 z-40 shrink-0">
+        {user && (
+          <div className="flex items-center gap-3 mb-6 p-2 rounded-xl bg-default-100/50">
+            <Avatar size="sm" aria-label="Menu">
+              <Avatar.Image
+                referrerPolicy="no-referrer"
+                alt="John Doe"
+                src={user?.image}
+              />
+              <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+            </Avatar>
+            <div className="overflow-hidden">
+              <p className="text-sm font-bold truncate">{user?.name}</p>
+              <p className="text-xs text-default-500 truncate">{user?.email}</p>
+            </div>
+          </div>
+        )}
+
         <div className="border-b border-divider pb-5 mb-5">
           <p className="text-xs text-default-400 font-bold mt-1 uppercase tracking-wider">
             {role} Dashboard
