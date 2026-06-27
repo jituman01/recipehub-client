@@ -210,35 +210,52 @@ const Navbar = () => {
           )}
         </header>
         {isMenuOpen && (
-          <div className="border-t border-separator md:hidden">
-            <ul className="flex flex-col gap-2 p-4 text-yellow-500">
-              <li>
-                <Link href="/" className="block py-2">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="block py-2">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="block py-2 font-medium text-accent">
-                  Dashboard
-                </Link>
-              </li>
-              
-              <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-                <Link href="#" className="block py-2">
-                  Login
-                </Link>
-              <Button
-                variant="danger"
-                className="w-full">Sign Up</Button>
-              </li>
-            </ul>
-          </div>
-        )}
+  <div className="border-t border-separator md:hidden">
+    <ul className="flex flex-col gap-2 p-4 text-yellow-500">
+      <li>
+        <Link href="/" className="block py-2" onClick={() => setIsMenuOpen(false)}>
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link href="/recipes" className="block py-2" onClick={() => setIsMenuOpen(false)}>
+          Browse Recipe
+        </Link>
+      </li>
+      
+      {user && (
+        <li>
+          <Link href={`/dashboard/${user?.role}`} className="block py-2 font-medium" onClick={() => setIsMenuOpen(false)}>
+            Dashboard
+          </Link>
+        </li>
+      )}
+      
+      {!user ? (
+        <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
+          <Link href="/signin" className="block py-2" onClick={() => setIsMenuOpen(false)}>
+            Login
+          </Link>
+          <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
+            <Button variant="danger" className="w-full">Sign Up</Button>
+          </Link>
+        </li>
+      ) : (
+        <li className="mt-4 border-t border-separator pt-4">
+          <button
+            onClick={() => {
+              handleSignOut();
+              setIsMenuOpen(false);
+            }}
+            className="flex w-full items-center gap-2 py-2 text-red-500"
+          >
+            <BiLogOut /> Logout
+          </button>
+        </li>
+      )}
+    </ul>
+  </div>
+)}
       </nav>
     
   );
