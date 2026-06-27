@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
 
           <Navbar />
           
-          <main className=" mx-auto px-2 min-h-screen">
+          <main className=" mx-auto min-h-screen">
             {children}
           </main>
           <Footer/>
