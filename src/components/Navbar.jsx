@@ -82,7 +82,7 @@ const Navbar = () => {
             </button>
             <Link href={'/'}>
               <div className="">
-                
+            
                 <p className="font-extrabold text-2xl "><span className="text-yellow-500">Recipe</span>Hub</p>
               </div>
             </Link>

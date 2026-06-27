@@ -24,11 +24,17 @@ const EditRecipeModal = ({
           <Input
             label="Recipe Title"
             variant="bordered"
-            value={editRecipeData.title}
+            value={editRecipeData.recipeName}
             onChange={e =>
-              setEditRecipeData({ ...editRecipeData, title: e.target.value })
+              setEditRecipeData({ ...editRecipeData, recipeName: e.target.value })
             }
           />
+          <Input
+  label="Cuisine Type"
+  variant="bordered"
+  value={editRecipeData.cuisineType}
+  onChange={e => setEditRecipeData({ ...editRecipeData, cuisineType: e.target.value })}
+/>
           <Input
             label="Category"
             variant="bordered"
@@ -41,11 +47,11 @@ const EditRecipeModal = ({
             label="Cooking Time (mins)"
             type="number"
             variant="bordered"
-            value={editRecipeData.cookingTime}
+            value={editRecipeData.prepTime}
             onChange={e =>
               setEditRecipeData({
                 ...editRecipeData,
-                cookingTime: e.target.value,
+                prepTime: e.target.value,
               })
             }
           />

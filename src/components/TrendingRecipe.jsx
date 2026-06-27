@@ -54,11 +54,11 @@ const TrendingRecipe = () => {
 
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end min-h-[240px] lg:min-h-[350px]">
             
-            <div className="absolute -bottom-12 lg:-bottom-20 lg:-top-74 right-0 left-0 lg:left-auto flex justify-center lg:block w-full lg:w-[135%] aspect-square max-w-[600px] z-20">
+            <div className="absolute -bottom-12 lg:-bottom-20 lg:-top-72 right-0 left-0 lg:left-auto flex justify-center lg:block w-full lg:w-[135%] aspect-square max-w-[680px] z-20">
               <img 
-                src="trending-1.png" 
+                src="burger-new.png" 
                 alt="Trending Recipe of the Month" 
-                className="w-full h-full object-contain filter drop-shadow-[0_25px_35px_rgba(0,0,0,0.25)] select-none pointer-events-none transform hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-contain filter select-none pointer-events-none transform hover:scale-105 transition-transform duration-500"
               />
             </div>
 

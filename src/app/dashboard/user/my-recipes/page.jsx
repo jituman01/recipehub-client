@@ -12,7 +12,7 @@ const MyRecipesPage = () => {
     const [loading, setLoading] = useState(true);
     
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [editRecipeData, setEditRecipeData] = useState({ id: "", title: "", category: "", cookingTime: "", difficulty: "easy" });
+    const [editRecipeData, setEditRecipeData] = useState({ id: "", title: "", category: "", prepTime: "", difficulty: "easy" });
     const [updating, setUpdating] = useState(false);
 
     const { data: session } = authClient.useSession();
@@ -38,9 +38,10 @@ const MyRecipesPage = () => {
         if (targetRecipe) {
             setEditRecipeData({
                 id: targetRecipe._id,
-                title: targetRecipe.title || targetRecipe.name || "",
+                recipeName: targetRecipe.recipeName || "", 
+                cuisineType: targetRecipe.cuisineType || "",
                 category: targetRecipe.category || "",
-                cookingTime: targetRecipe.cookingTime || "",
+                prepTime: targetRecipe.prepTime || "",
                 difficulty: targetRecipe.difficulty || "easy"
             });
             setIsModalOpen(true); 
