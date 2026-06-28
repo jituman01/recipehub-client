@@ -20,7 +20,21 @@ const RecipeDetailsPage = async ({ params }) => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+  const userId = session?.user?.id;
   const isLoggedIn = !!session;
+
+  let isLiked = false;
+let isFavorited = false;
+
+if (userId) {
+    const likeRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/check-like?userId=${userId}&recipeId=${id}`);
+    const likeData = await likeRes.json();
+    isLiked = likeData.isLiked;
+
+    const favRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/check-favorite?userId=${userId}&recipeId=${id}`);
+    const favData = await favRes.json();
+    isFavorited = favData.isFavorited;
+}
 
   const ingredientsList = recipe.ingredients
     ? recipe.ingredients.split('\n').filter(line => line.trim() !== '')
@@ -86,7 +100,7 @@ const RecipeDetailsPage = async ({ params }) => {
         </div>
       </div>
 
-      {/* 🎯 Actions Section */}
+      {/* Actions Section */}
       <div className="w-full bg-white dark:bg-white/10 border border-default-200 dark:border-white/10 p-6 rounded-3xl shadow-sm space-y-4">
         <span className="text-[11px] font-bold text-gray-400 dark:text-gray-500 tracking-wider uppercase block">
           Actions
@@ -95,6 +109,7 @@ const RecipeDetailsPage = async ({ params }) => {
         {/* Like Button */}
         <RecipeLikeButton
           recipeId={recipe._id}
+          initialIsLiked={isLiked}
           initialLikes={recipe.likesCount || 0}
           isLoggedIn={isLoggedIn}
           signinRedirectUrl={signinRedirectUrl}
@@ -103,6 +118,7 @@ const RecipeDetailsPage = async ({ params }) => {
         {/* Favorites */}
         <RecipeFavoriteButton
           recipeId={recipe._id}
+          initialIsFavorited={isFavorited}
           isLoggedIn={isLoggedIn}
           signinRedirectUrl={signinRedirectUrl}
         />

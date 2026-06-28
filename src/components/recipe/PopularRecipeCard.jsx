@@ -47,7 +47,7 @@ const PopularRecipeCard = ({ recipe, index }) => {
 
         <div className="flex items-center justify-center gap-2 pt-2">
           <FcLike className="w-3 h-3" />
-          <span className="font-semibold text-sm text-black/70 dark:text-white">
+          <span className="font-extrabold text-sm text-black/70 dark:text-white">
             {`${likesCount} Likes`}
           </span>
         </div>
