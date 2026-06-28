@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🥘 RecipeHub – A Social Ecosystem for Food Creators
 
-## Getting Started
+**RecipeHub** is a modern, responsive web application designed for food enthusiasts, home chefs, and culinary artists. It serves as a social ecosystem where users can showcase their culinary creations, discover secret family recipes, and connect with a passionate foodie community.
 
-First, run the development server:
+🔗 **Live Demo:** [https://recipehub-client-nine.vercel.app](https://recipehub-client-nine.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Key Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 🌟 Core User Features
+*   **Recipe Publishing:** Create and share your unique recipes with step-by-step instructions.
+*   **Secret Recipe Vault:** Access exclusive, traditional, and hidden family recipes curated by top creators.
+*   **Community Feed:** A social space to like, comment, and engage with fellow food lovers.
+*   **Creator Profiles:** Follow your favorite chefs and keep track of their latest kitchen experiments.
+*   **Advanced Search & Filter:** Quickly find recipes by category, preparation time, or specific ingredients.
+*   **Personalized Dashboard:** Manage your own recipes, bookmarked favorites, and account settings in one place.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 💎 Premium Features
+*   **Expert Masterclasses:** Unlock exclusive video tutorials and cooking tips from professional chefs.
+*   **Ad-Free Experience:** Enjoy a seamless, uninterrupted browsing and cooking experience.
+*   **Premium Collection:** Gain access to high-tier, limited-access culinary content.
+*   *Note: After purchasing a subscription, please log out of your account and log back in to activate your premium features.*
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Tech Stack
+*   **Frontend:** React, Next.js
+*   **Styling:** Tailwind CSS
+*   **Animations:** Framer Motion (for smooth scroll & UI interactions)
+*   **Icons:** Lucide React & Custom Emojis
+*   **Deployment:** Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🎨 UI & UX Highlights
+Dual Mode: Seamless toggling between Light and Dark themes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Smooth Motion: Built with Framer Motion for high-end, smooth animations upon scrolling.
 
-## Deploy on Vercel
+Responsive Design: Fully optimized for Mobile, Tablet, and Desktop screens.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🤝 Support & Feedback
+RecipeHub is constantly evolving! If you encounter any bugs or have ideas for new features, feel free to open an issue or contact me.
