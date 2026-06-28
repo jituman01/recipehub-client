@@ -19,7 +19,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { BiDish } from 'react-icons/bi';
 import toast from 'react-hot-toast';
-import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from 'react-icons/fc';
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -53,7 +53,6 @@ export default function SignUpPage() {
       setLoading(false);
     }
   };
-
 
   const handleGoogleSignIn = async () => {
     setGoogleLoading(true);
@@ -147,7 +146,10 @@ export default function SignUpPage() {
                   pattern="^(?=.*[a-z])(?=.*[A-Z]).+$"
                   title="Password must be at least 6 characters long, contain at least one uppercase letter and one lowercase letter."
                 />
-                <FieldError className="text-xs text-rose-500 mt-1" />
+                <FieldError className="text-xs text-rose-500 mt-1">
+                  Password must be at least 6 characters long, with one
+                  uppercase and one lowercase letter.
+                </FieldError>
               </TextField>
             </Fieldset.Group>
 
@@ -178,7 +180,9 @@ export default function SignUpPage() {
                 className="w-full bg-transparent border border-gray-300 dark:border-zinc-700 text-slate-700 dark:text-zinc-300 font-semibold rounded-xl active:scale-[0.98] transition-all text-center text-sm flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800/30"
               >
                 <FcGoogle size={20} />
-                {googleLoading ? 'Connecting to Google...' : 'Sign up with Google'}
+                {googleLoading
+                  ? 'Connecting to Google...'
+                  : 'Sign up with Google'}
               </Button>
             </div>
 
