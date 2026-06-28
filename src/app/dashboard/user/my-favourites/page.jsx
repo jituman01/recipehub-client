@@ -71,7 +71,7 @@ const MyFavoritesPage = () => {
           {favoriteRecipes.map(recipe => (
             <Card
               key={recipe._id}
-              className="border border-default-200/60 bg-background/60 backdrop-blur-md shadow-sm overflow-hidden flex flex-col justify-between"
+              className="border border-default-200/60 bg-background/60 dark:bg-black/10 backdrop-blur-md shadow-sm overflow-hidden flex flex-col justify-between"
               radius="lg"
             >
               {/* img */}

@@ -6,11 +6,11 @@ import Link from 'next/link';
 
 const ManageRecipeTable = ({ recipes = [], onEdit, onDelete }) => {
   return (
-    <div className="w-full bg-white dark:bg-slate-950 border border-default-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
+    <div className="w-full bg-white dark:bg-black/10 border border-default-200 dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[800px] text-left border-collapse ">
           <thead>
-            <tr className="border-b border-gray-500 dark:border-white/10 bg-default-50/50 dark:bg-slate-900/40">
+            <tr className="border-b border-gray-500 dark:border-white/10 bg-default-50/50 dark:bg-black">
               <th className="py-4 px-6 text-xs font-bold text-default-500 uppercase tracking-wider">
                 Recipe
               </th>
@@ -45,7 +45,7 @@ const ManageRecipeTable = ({ recipes = [], onEdit, onDelete }) => {
               recipes.map(recipe => (
                 <tr
                   key={recipe._id}
-                  className="border-b border-default-100 dark:border-gray-600 dark:bg-black hover:bg-default-50/50 dark:hover:bg-white/5 transition-colors duration-150 last:border-0"
+                  className="border-b border-default-100 dark:border-gray-600 dark:bg-black/10 hover:bg-default-50/50 dark:hover:bg-white/5 transition-colors duration-150 last:border-0"
                 >
                   {/* Recipe Thumbnail & Info */}
                   <td className="py-4 px-6">

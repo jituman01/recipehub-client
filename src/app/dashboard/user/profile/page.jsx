@@ -72,7 +72,7 @@ const UserProfilePage = () => {
         </p>
       </div>
 
-      <Card className="border border-default-200/60 bg-background/60 backdrop-blur-md p-6 shadow-sm" radius="lg">
+      <Card className="border border-default-200/60 bg-background/60 dark:bg-black/10 backdrop-blur-md p-6 shadow-sm" radius="lg">
         <form onSubmit={handleUpdate} className="space-y-6">
           
           <div className="flex flex-col items-center space-y-3">

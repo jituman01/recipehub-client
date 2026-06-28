@@ -42,7 +42,7 @@ const MyPurchasedRecipePage = () => {
         </p>
       </div>
 
-      <div className="w-full overflow-x-auto rounded-xl border border-divider bg-background shadow-sm">
+      <div className="w-full overflow-x-auto rounded-xl border border-divider bg-background dark:bg-black/10 shadow-sm">
         <table className="w-full min-w-[800px] text-left border-collapse">
           <thead>
             <tr className="border-b border-divider text-[11px] font-bold text-default-400 uppercase bg-default-50/50">

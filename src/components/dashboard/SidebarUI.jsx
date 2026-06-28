@@ -43,7 +43,7 @@ export default function SidebarUI({ role }) {
       },
       {
         icon: ShoppingCart,
-        label: 'My Purchased Recipes',
+        label: 'Purchased Recipes',
         link: '/dashboard/user/purchased-recipes',
       },
       { icon: User, label: 'Profile', link: '/dashboard/user/profile' },
@@ -122,12 +122,10 @@ export default function SidebarUI({ role }) {
 
   return (
     <>
-      <header className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-background border-b border-divider z-50">
+      <header className="lg:hidden fixed top-0 left-0 right-0 h-16  dark:bg-black/10 border-b border-divider z-50">
         <div className="h-full px-4 flex items-center justify-between">
           <div>
-            <p className="font-extrabold text-lg">
-              <span className="text-yellow-500">Recipe</span>Hub
-            </p>
+    
             <p className="text-[10px] text-default-400 uppercase">
               {role} Dashboard
             </p>
@@ -138,7 +136,7 @@ export default function SidebarUI({ role }) {
         </div>
       </header>
 
-      <aside className="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-72 flex-col border-r border-divider bg-background p-6 z-40 shrink-0">
+      <aside className="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-72 flex-col border-r border-divider bg-background dark:bg-black/10 p-6 z-40 shrink-0">
         {user && (
           <div className="flex items-center gap-3 mb-6 p-2 rounded-xl bg-default-100/50">
             <Avatar size="sm" aria-label="Menu">

@@ -61,7 +61,7 @@ const UserOverviewPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Total Recipes Card */}
         <Card
-          className="glass border-default-200/50 bg-background/60 backdrop-blur-md shadow-sm"
+          className="glass border-default-200/50 dark:bg-black/20  bg-background/60 backdrop-blur-md shadow-sm"
           radius="lg"
         >
           <div className="p-6 flex flex-row items-center justify-between">
@@ -81,7 +81,7 @@ const UserOverviewPage = () => {
 
         {/* Total Favorites Card */}
         <Card
-          className="glass border-default-200/50 bg-background/60 backdrop-blur-md shadow-sm"
+          className="glass border-default-200/50 bg-background/60 dark:bg-black/20 backdrop-blur-md shadow-sm"
           radius="lg"
         >
           <div className="p-6 flex flex-row items-center justify-between">
@@ -101,7 +101,7 @@ const UserOverviewPage = () => {
 
         {/* Likes Received Card */}
         <Card
-          className="glass border-default-200/50 bg-background/60 backdrop-blur-md shadow-sm"
+          className="glass border-default-200/50 bg-background/60 dark:bg-black/20 backdrop-blur-md shadow-sm"
           radius="lg"
         >
           <div className="p-6 flex flex-row items-center justify-between">
@@ -136,6 +136,7 @@ const UserOverviewPage = () => {
                 Upgrade to our Pro Package to share unlimited culinary creations
                 with the community.
               </p>
+              <p className='text-red-500 font-semibold'>Note: After purchasing your subscription, please log out of your account and log back in to enjoy all premium features.</p>
             </div>
             <Link href="/pricing">
               <Button

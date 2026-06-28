@@ -51,7 +51,7 @@ export default function AddRecipeForm() {
   };
 
   return (
-    <div className="w-full bg-background border border-divider rounded-2xl p-4 sm:p-6 shadow-sm">
+    <div className="w-full bg-background dark:bg-black/10 border border-divider rounded-2xl p-4 sm:p-6 shadow-sm">
       <div className="border-b border-divider pb-4 mb-5">
         <h3 className="text-lg font-bold flex items-center gap-2 text-yellow-500">
           <Plus className="text-yellow-500 w-5 h-5" /> Add New Recipe
