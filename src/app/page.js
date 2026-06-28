@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import CommunityTestimonial from "@/components/CommunityTestimonial";
 import FeaturedSection from "@/components/FeaturedSection";
 import PopularRecipe from "@/components/PopularRecipe";
 import RecipeAboutSection from "@/components/RecipeAboutSection";
@@ -12,7 +13,8 @@ export default function Home() {
       <RecipeAboutSection/>
       <FeaturedSection />
       <PopularRecipe />
-      <TrendingRecipe/>
+      <TrendingRecipe />
+      <CommunityTestimonial/>
     </div>
   );
 }
