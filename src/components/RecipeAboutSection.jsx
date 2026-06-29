@@ -51,7 +51,7 @@ const RecipeAboutSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-20 bg-[#FAF9F5] dark:bg-black/10 transition-colors duration-300 overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 bg-white dark:bg-black/10 transition-colors duration-300 overflow-hidden">
       
       {/* Floating Elements */}
       <div className="absolute top-12 left-[10%] text-3xl opacity-30 animate-bounce duration-1000">🍃</div>
