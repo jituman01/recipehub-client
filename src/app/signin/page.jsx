@@ -1,21 +1,14 @@
 'use client';
 
 import { authClient } from '@/lib/auth-client';
-import {
-  Button,
-  Description,
-  FieldError,
-  Fieldset,
-  Form,
-  Input,
-  Label,
-  TextField,
-} from '@heroui/react';
+import { Button, Form, TextField, Input, FieldError } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { FcGoogle } from "react-icons/fc";
+import animationData from '../../animations/react4.json';
+import Lottie from 'lottie-react';
+
 
 export default function SignInPage() {
   const router = useRouter();
@@ -32,22 +25,16 @@ export default function SignInPage() {
     const { email, password } = Object.fromEntries(formData.entries());
 
     await authClient.signIn.email(
-      {
-        email,
-        password,
-      },
+      { email, password },
       {
         onSuccess: () => {
           toast.success('Successfully logged in!');
-          setLoading(false);
-          router.push('/'); 
+          router.push('/');
           router.refresh();
         },
         onError: (ctx) => {
           setLoading(false);
-          setErrorMsg(
-            ctx.error.message || 'Invalid email or password. Please try again.'
-          );
+          setErrorMsg(ctx.error.message || 'Invalid email or password.');
         },
       }
     );
@@ -55,108 +42,76 @@ export default function SignInPage() {
 
   const handleGoogleSignIn = async () => {
     setGoogleLoading(true);
-    try {
-      await authClient.signIn.social({
-        provider: 'google',
-        callbackURL: '/',
-      });
-    } catch (error) {
-      setGoogleLoading(false);
-    }
+    await authClient.signIn.social({ 
+      provider: 'google', 
+      callbackURL: '/' 
+    });
   };
 
   return (
-    <div className="flex items-center justify-center p-4 sm:p-8 max-w-xl mx-auto mb-20 mt-10">
-      <div className="w-full rounded-4xl border border-yellow-200 dark:border-yellow-900 bg-white dark:bg-white/10 backdrop-blur-3xl p-6 sm:p-8 transition-colors duration-300 shadow-2xl shadow-yellow-200 dark:shadow-yellow-900">
-        <Form onSubmit={onSubmit} className="space-y-6">
-          <Fieldset className="w-full space-y-2">
-            <div className="text-center space-y-1 mb-4">
-              <Fieldset.Legend className="text-2xl font-extrabold text-yellow-500 tracking-tight">
-                LogIn
-              </Fieldset.Legend>
-              <Description className="text-sm text-slate-500 dark:text-zinc-400">
-                Sign in to your RecipeHub account to continue
-              </Description>
+    <div className="flex h-screen w-full bg-white dark:bg-black/10">
+      {/* Left Image Section */}
+      <div className="w-full hidden md:inline-block lg:pt-30">
+        <div className=" flex items-center justify-center min-h-[350px] relative">
+            <div className="lottie-box w-full max-w-[500px]  relative group overflow-hidden transition-colors duration-300">
+               <Lottie animationData={animationData} loop={true} />
             </div>
+          </div>
+      </div>
 
-            {errorMsg && (
-              <div className="p-3 bg-rose-500/10 border border-rose-500/20 text-rose-500 rounded-xl text-xs text-center font-medium">
-                {errorMsg}
-              </div>
-            )}
+      {/* Right Form Section */}
+      <div className="w-full flex flex-col items-center  justify-center ">
+        <div className='border-2 rounded-3xl p-5'>
+          <Form onSubmit={onSubmit} className="md:w-96  w-80 flex flex-col items-center">
+          <h2 className="text-4xl text-gray-900 dark:text-white font-medium">Sign in</h2>
+          <p className="text-sm text-gray-500/90 mt-3">Welcome back! Please sign in to continue</p>
 
-            <Fieldset.Group className="space-y-4">
-              <TextField isRequired name="email" type="email" className="w-full">
-                <Label className="text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1 block">
-                  Email Address
-                </Label>
-                <Input
-                  placeholder="Enter Your Email"
-                  variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-black border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
-                />
-                <FieldError className="text-xs text-rose-500 mt-1" />
-              </TextField>
+          <button 
+            type="button" 
+            onClick={handleGoogleSignIn}
+            disabled={loading || googleLoading}
+            className="w-full mt-8 bg-gray-500/10 flex items-center justify-center h-12 rounded-full hover:bg-gray-500/20 transition-all"
+          >
+            <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleLogo.svg" alt="googleLogo" />
+          </button>
 
-              <TextField isRequired name="password" type="password" className="w-full">
-                <Label className="text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1 block">
-                  Password
-                </Label>
-                <Input
-                  placeholder="Enter Your Password"
-                  variant="secondary"
-                  className="w-full bg-gray-150 dark:bg-black border-slate-200 dark:border-zinc-700 rounded-xl focus:ring-2 focus:ring-yellow-500"
-                />
-                <Link
-                  href="/forgot-password"
-                  className="text-xs text-yellow-500 hover:underline inline-block mt-1"
-                >
-                  Forgotten Password?
-                </Link>
-                <FieldError className="text-xs text-rose-500 mt-1" />
-              </TextField>
-            </Fieldset.Group>
+          <div className="flex items-center gap-4 w-full my-5">
+            <div className="w-full h-px bg-gray-300/90"></div>
+            <p className="w-full text-nowrap text-sm text-gray-500/90">or sign in with email</p>
+            <div className="w-full h-px bg-gray-300/90"></div>
+          </div>
 
-            <div className="pt-4">
-              <Button
-                type="submit"
-                isDisabled={loading}
-                className="w-full py-3 bg-gradient-to-r from-yellow-500 to-amber-500 text-white font-bold rounded-xl shadow-md shadow-yellow-500/10 hover:shadow-yellow-500/20 active:scale-[0.98] transition-all text-center text-sm"
-              >
-                {loading ? 'Signing In...' : 'Sign In'}
-              </Button>
+          {errorMsg && <p className="text-red-500 text-xs mb-4">{errorMsg}</p>}
+
+          <div className="flex items-center w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
+            <input name="email" type="email" placeholder="Email id" className="bg-transparent text-gray-500/80 outline-none text-sm w-full h-full" required />
+          </div>
+
+          <div className="flex items-center mt-6 w-full bg-transparent border border-gray-300/60 h-12 rounded-full overflow-hidden pl-6 gap-2">
+            <input name="password" type="password" placeholder="Password" className="bg-transparent text-gray-500/80 outline-none text-sm w-full h-full" required />
+          </div>
+
+          <div className="w-full flex items-center justify-between mt-8 text-gray-500/80">
+            <div className="flex items-center gap-2">
+              <input className="h-5" type="checkbox" id="checkbox" />
+              <label className="text-sm" htmlFor="checkbox">Remember me</label>
             </div>
+            <Link className="text-sm underline" href="/forgot-password">Forgot password?</Link>
+          </div>
 
-            <div className="flex items-center">
-              <div className="flex-grow border-t border-gray-300 dark:border-zinc-700"></div>
-              <span className="mx-4 text-xs text-gray-400 font-medium">OR</span>
-              <div className="flex-grow border-t border-gray-300 dark:border-zinc-700"></div>
-            </div>
+          <Button 
+            type="submit" 
+            isLoading={loading}
+            className="mt-8 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity"
+          >
+            Login
+          </Button>
 
-            <div>
-              <Button
-                type="button"
-                onClick={handleGoogleSignIn}
-                isDisabled={loading || googleLoading}
-                variant="bordered"
-                className="w-full bg-transparent border border-gray-300 dark:border-zinc-700 text-slate-700 dark:text-zinc-300 font-semibold rounded-xl active:scale-[0.98] transition-all text-center text-sm flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800/30"
-              >
-                <FcGoogle size={20} />
-                {googleLoading ? 'Connecting to Google...' : 'Sign in with Google'}
-              </Button>
-            </div>
-
-            <p className="text-center text-xs text-slate-500 dark:text-zinc-400 pt-4">
-              Don't have an account?{' '}
-              <Link
-                href="/signup"
-                className="text-yellow-500 hover:underline font-semibold"
-              >
-                Sign up here
-              </Link>
-            </p>
-          </Fieldset>
+          <p className="text-gray-500/90 text-sm mt-4">
+            Don’t have an account? <Link className="text-indigo-400 hover:underline" href="/signup">Sign up</Link>
+          </p>
         </Form>
+        </div>
       </div>
     </div>
   );
